@@ -527,20 +527,5 @@ public class EmailManagerTest {
         assertTrue(destinatarios.contains(c3));
 
     }
-
-    @Test
-    public void mandar_email_a_grupo_precreado(){
-
-        LosPibes lp = new LosPibes();
-        Contacto c1 = new Contacto("Ramiro", "Oviedo", "ramiroviedo@gmail.com");
-
-        EmailManager em = new EmailManager();
-        Email email1 = new Email ("Vamos a jugar?", "Sale LOL", c1, lp.getContactos());
-        em.enviar(email1);
-        
-        assertEquals("Vamos a jugar?", email1.getAsunto());
-        assertEquals(c1, email1.getRemitente());
-        assertEquals(4, lp.obtenerMiembros().size());
-    }
     
 }

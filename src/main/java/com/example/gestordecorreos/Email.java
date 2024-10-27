@@ -12,9 +12,10 @@ public class Email {
     // remitente es un Contacto
     private Contacto remitente;
 
-
     // destinatarios es uno o mas Contactos
     public ArrayList<Contacto> destinatarios;
+
+    public boolean esFavorito = false;
 
     public Email(String asunto, String contenido, Contacto remitente, List<Contacto> destinatarios) {
         setAsunto(asunto);
@@ -58,5 +59,9 @@ public class Email {
     public Email clonar() {
         return new Email(this.asunto, this.contenido, this.remitente, new ArrayList<>( this.destinatarios));
 
+    }
+
+    public void marcarComoFavorito() {
+        this.esFavorito = true;
     }
 }

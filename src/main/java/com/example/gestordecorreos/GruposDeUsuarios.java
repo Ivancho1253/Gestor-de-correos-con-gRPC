@@ -3,27 +3,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Grupo {
+public class GruposDeUsuarios {
 
-    public List<Contacto> contactos;
+    public List <Contacto> contactos;
 
-    public Grupo() {
+    public GruposDeUsuarios() {
         this.contactos = new ArrayList<>();
     }
 
-    
-    public Grupo(List<Contacto> contactos) {
-        //Se recibe una lista de contactos como parametro
-        this.contactos = contactos != null ? contactos : new ArrayList<>();
-    }
-
    
-    public void agregarContacto(Contacto contacto) {
+    public void agregarAlGrupo(Contacto contacto) {
         contactos.add(contacto);
         
     }
 
-    public List<Contacto> getContactos() {
+    public List<Contacto> obtenerMiembros() {
         return contactos;
     }
 

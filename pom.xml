@@ -37,7 +37,7 @@
 
     <!-- Configuración de propiedades -->
     <properties>
-        <java.version>22</java.version> <!-- Cambiar a la versión correcta de Java -->
+        <java.version>21</java.version> <!-- Cambiar a la versión correcta de Java -->
     </properties>
 
     <!-- Dependencias del proyecto -->

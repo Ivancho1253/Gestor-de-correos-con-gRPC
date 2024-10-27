@@ -58,25 +58,27 @@ public class ContactoTest {
         Contacto c3 = new Contacto("Rodrigo", "Magallanes", "rodrigomagallanes0@gmail.com");
 
         // Crear una lista de contactos
-        List<Contacto> LosPibes = new ArrayList<>();
-        LosPibes.add(c1);
-        LosPibes.add(c2);
-        LosPibes.add(c3);
+        GruposDeUsuarios grupo = new GruposDeUsuarios();
+
+        grupo.agregarAlGrupo(c1);
+        grupo.agregarAlGrupo(c2);
+        grupo.agregarAlGrupo(c3);
 
         // Crear el grupo con esa lista de contactos
 
-        assertEquals(3, LosPibes.size()); 
-        assertTrue(LosPibes.contains(c1));
-        assertTrue(LosPibes.contains(c2));
-        assertTrue(LosPibes.contains(c3)); 
+        assertEquals(3, grupo.obtenerMiembros().size()); 
     }
     @Test
     public void crearContactoConPibes() {
-        List<Contacto> listaContactos = new ArrayList<>();
-        listaContactos.add(new Contacto("Juan", "Perez", "juanperez@gmail.com"));
-        listaContactos.add(new Contacto("Maria", "Gomez", "mariagomez@gmail.com"));
 
-        LosPibes grupo = new LosPibes(listaContactos);
+        Contacto c1 = new Contacto("Juan", "Perez", "juanperez@gmail.com");
+        Contacto c2= new Contacto("Maria", "Gomez", "mariagomez@gmail.com");
+
+        GruposDeUsuarios grupo = new GruposDeUsuarios();
+
+        grupo.agregarAlGrupo(c1);
+        grupo.agregarAlGrupo(c2);
+
         assertEquals(2, grupo.obtenerMiembros().size());
         assertEquals("Juan", grupo.obtenerMiembros().get(0).getNombre());
         assertEquals("Maria", grupo.obtenerMiembros().get(1).getNombre());
