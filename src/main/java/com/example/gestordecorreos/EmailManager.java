@@ -9,7 +9,7 @@ public class EmailManager
 
     //contacto envia un email a uno o varios contactos
 
-    public ArrayList <Email> favoritos = new ArrayList<>();
+    public ArrayList <Bandeja> favoritos = new ArrayList<>();
 
     public EmailManager() {
     }
@@ -38,19 +38,20 @@ public class EmailManager
         return bandejaFiltrada; 
     }
     
-    public void marcarComoFavorito(Email emailFavorito, Bandeja bandejaFavoritos) {
+    public void marcarComoFavorito(Email emailFavorito, ArrayList <Email> bandejaFavoritos) {
         emailFavorito.esFavorito = true;
         agregarFavoritos(emailFavorito, bandejaFavoritos);
     }
 
     @Override
-    public void agregarFavoritos(Email emailFavorito, Bandeja bandejaFavoritos) {
-        bandejaFavoritos.getFavoritos().add(emailFavorito);
+    public ArrayList <Email> getFavoritos(ArrayList <Email> bandejaFavoritos) {
+        return bandejaFavoritos;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public ArrayList<Email> getFavoritos(Bandeja bandejaFavoritos) {
-        return bandejaFavoritos.getFavoritos();
+    public void agregarFavoritos(Email emailFavorito, ArrayList <Email> bandejaFavoritos) {
+        bandejaFavoritos.add(emailFavorito);
     }
 
 

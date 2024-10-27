@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public interface IFavoritos {
 
 
-    public void agregarFavoritos(Email emailFavorito, Bandeja favoritos);
+    public void agregarFavoritos(Email emailFavorito, ArrayList <Email> favoritos);
 
-    public ArrayList <Email> getFavoritos(Bandeja favoritos);
+    public ArrayList <Email> getFavoritos(ArrayList <Email> bandejaFavoritos);
 
 }

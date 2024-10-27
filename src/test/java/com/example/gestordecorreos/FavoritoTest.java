@@ -14,6 +14,7 @@ public class FavoritoTest {
 
         Contacto c1 = new Contacto("Augusto", "Ojeda", "augusto@ucp.com");
         Contacto c2 = new Contacto("Ivan", "Cabrera", "ivan@ucp.com");
+        //Contacto c3 = new Contacto("Rodrigo", "Magallanes", "rodrigo@ucp.com");
 
         List<Contacto> destinatarios = new ArrayList<>();
         destinatarios.add(c2);
@@ -25,11 +26,24 @@ public class FavoritoTest {
         em.enviar(e1);
         em.enviar(e2);
 
+        //Ivan marca en su bandeja de recibido un mensaje como favorito
         assertEquals(2, c2.bandeja.getRecibidos().size());
 
-       // em.marcarComoFavorito(e2, c2.bandeja);
+        em.marcarComoFavorito(e2, c2.bandeja.getFavoritos());
 
-        assertEquals(1, em.getFavoritos(c2.bandeja).size());
+        assertEquals(1, c2.bandeja.favoritos.size());
+        
+        //Augusto marca en su bandeja de enviado un mensaje como favorito
+        assertEquals(2, c1.bandeja.getEnviados().size());
+
+        em.marcarComoFavorito(c1.bandeja.getEnviados().get(0), c1.bandeja.getFavoritos());
+
+        assertEquals(1, c1.bandeja.favoritos.size());
+
+        //em.marcarComoFavorito(c3.bandeja.getEnviados().get(0), c3.bandeja.getFavoritos());
+
+        
+        
     }
 
 
