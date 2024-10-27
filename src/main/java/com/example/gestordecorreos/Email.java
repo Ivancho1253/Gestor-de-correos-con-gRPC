@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public class Email {
+
     //el correo es enviado por email manager
     private String asunto;
     private String contenido;
@@ -14,6 +15,9 @@ public class Email {
 
     // destinatarios es uno o mas Contactos
     public ArrayList<Contacto> destinatarios;
+
+    //lista de emails favoritos
+    public ArrayList<Email> favoritos = new ArrayList<>();
 
     public boolean esFavorito = false;
 
@@ -61,7 +65,8 @@ public class Email {
 
     }
 
-    public void marcarComoFavorito() {
-        this.esFavorito = true;
+    public boolean getFavorito(){
+        return this.esFavorito;
     }
+    
 }

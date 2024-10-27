@@ -1,11 +1,15 @@
 package com.example.gestordecorreos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class EmailManager {
+public class EmailManager 
+        implements IFavoritos{
 
     //contacto envia un email a uno o varios contactos
+
+    public ArrayList <Email> favoritos = new ArrayList<>();
 
     public EmailManager() {
     }
@@ -32,8 +36,22 @@ public class EmailManager {
            
         }
         return bandejaFiltrada; 
-}
+    }
+    
+    public void marcarComoFavorito(Email emailFavorito, Bandeja bandejaFavoritos) {
+        emailFavorito.esFavorito = true;
+        agregarFavoritos(emailFavorito, bandejaFavoritos);
+    }
 
+    @Override
+    public void agregarFavoritos(Email emailFavorito, Bandeja bandejaFavoritos) {
+        bandejaFavoritos.getFavoritos().add(emailFavorito);
+    }
+
+    @Override
+    public ArrayList<Email> getFavoritos(Bandeja bandejaFavoritos) {
+        return bandejaFavoritos.getFavoritos();
+    }
 
 
     

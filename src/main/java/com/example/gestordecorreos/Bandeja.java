@@ -5,10 +5,12 @@ public class Bandeja {
 
     ArrayList <Email> recibidos;
     ArrayList <Email> enviados;
-    
+    ArrayList <Email> favoritos;
+
     public Bandeja() {
         this.recibidos = new ArrayList<>();
         this.enviados = new ArrayList<>();
+        this.favoritos = new ArrayList<>();
     }
 
     public ArrayList<Email> getRecibidos() {
@@ -17,6 +19,14 @@ public class Bandeja {
 
     public ArrayList<Email> getEnviados() {
         return enviados;
+    }
+
+    public ArrayList<Email> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(ArrayList<Email> favoritos) {
+        this.favoritos = favoritos;
     }
 
     
