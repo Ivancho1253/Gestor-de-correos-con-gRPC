@@ -16,8 +16,6 @@
         <grpc.version>1.67.1</grpc.version>
         <protobuf.version>4.28.3</protobuf.version>
         <protoc.version>4.28.3</protoc.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <spring.boot.version>3.0.0</spring.boot.version> <!-- Ajusta la versión según tu necesidad -->
     </properties>
 
@@ -126,6 +124,19 @@
         </extensions>
         
         <plugins>
+            <!-- Maven Compiler Plugin with 'release' configuration -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>8</release>
+                    <compilerArgs>
+                        <arg>-Xlint:-options</arg> <!-- Suprimir advertencias obsoletas -->
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
             <!-- Protobuf Maven Plugin for generating Java code from .proto files -->
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
@@ -140,6 +151,7 @@
                     <execution>
                         <goals>
                             <goal>compile</goal>
+                            <goal>compile-custom</goal>
                         </goals>
                     </execution>
                 </executions>

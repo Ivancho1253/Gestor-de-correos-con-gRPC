@@ -7,7 +7,7 @@ package gestordecorreos;
 
 // Definición del servicio GrpsService
 service GrpsService {
-  rpc SomeMethod (Request) returns (Response);
+  rpc YourMethod (Request) returns (Response);
 }
 
 // Mensaje de solicitud
