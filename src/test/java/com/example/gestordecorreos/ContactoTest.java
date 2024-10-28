@@ -64,6 +64,8 @@ public class ContactoTest {
 
         assertEquals(3, grupo.obtenerMiembros().size()); 
     }
+
+    
     @Test
     public void crearContactoConPibes() {
 
@@ -71,10 +73,10 @@ public class ContactoTest {
         Contacto c2= new Contacto("Maria", "Gomez", "mariagomez@gmail.com");
 
         GruposDeUsuarios grupo = new GruposDeUsuarios();
-
+        
         grupo.agregarAlGrupo(c1);
         grupo.agregarAlGrupo(c2);
-
+        
         assertEquals(2, grupo.obtenerMiembros().size());
         assertEquals("Juan", grupo.obtenerMiembros().get(0).getNombre());
         assertEquals("Maria", grupo.obtenerMiembros().get(1).getNombre());
