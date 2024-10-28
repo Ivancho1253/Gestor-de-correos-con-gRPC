@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.example.gestordecorreos";  // Cambia este valor según tu paquete en Java
+option java_outer_classname = "GrpsServiceProto";      // Nombre de la clase que contendrá los mensajes y servicios
+
+package gestordecorreos;
+
+// Definición del servicio GrpsService
+service GrpsService {
+  rpc SomeMethod (Request) returns (Response);
+}
+
+// Mensaje de solicitud
+message Request {
+  string message = 1;  // Puedes definir más campos según tus necesidades
+}
+
+// Mensaje de respuesta
+message Response {
+  string message = 1;  // Puedes definir más campos según tus necesidades
+}
