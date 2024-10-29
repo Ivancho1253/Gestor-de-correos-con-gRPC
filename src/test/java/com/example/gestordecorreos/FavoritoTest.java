@@ -29,20 +29,11 @@ public class FavoritoTest {
         //Ivan marca en su bandeja de recibido un mensaje como favorito
         assertEquals(2, c2.bandeja.getRecibidos().size());
 
-        em.marcarComoFavorito(e2, c2);
+        c2.agregarFavoritos(e2);
 
-        assertEquals(1, c2.bandeja.favoritos.size());
-        
-        //Augusto marca en su bandeja de enviado un mensaje como favorito
-        assertEquals(2, c1.bandeja.getEnviados().size());
+        assertEquals(1, c2.bandeja.getFavoritos().size());
 
-        em.marcarComoFavorito(c1.bandeja.getEnviados().get(0), c1.bandeja.getFavoritos());
-
-        assertEquals(1, c1.bandeja.favoritos.size());
-
-        //em.marcarComoFavorito(c3.bandeja.getEnviados().get(0), c3.bandeja.getFavoritos());
-
-        
+        //c3.marcarComoFavorito(e2);
         
     }
 

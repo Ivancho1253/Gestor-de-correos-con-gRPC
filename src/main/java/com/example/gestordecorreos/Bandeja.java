@@ -21,12 +21,12 @@ public class Bandeja {
         return enviados;
     }
 
-    public ArrayList<Email> getFavoritos() {
-        return favoritos;
+    public void setFavoritos(Email emailFavorito){
+        this.favoritos.add(emailFavorito);
     }
 
-    public void setFavoritos(ArrayList<Email> favoritos) {
-        this.favoritos = favoritos;
+    public ArrayList<Email> getFavoritos() {
+        return favoritos;
     }
 
     

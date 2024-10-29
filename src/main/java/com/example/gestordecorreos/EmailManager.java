@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EmailManager 
-        implements IFavoritos{
+public class EmailManager{
 
     //contacto envia un email a uno o varios contactos
 
@@ -37,25 +36,5 @@ public class EmailManager
         }
         return bandejaFiltrada; 
     }
-    
-    public void marcarComoFavorito(Email emailFavorito, ArrayList <Email> bandejaFavoritos) {
-        emailFavorito.esFavorito = true;
-        agregarFavoritos(emailFavorito, bandejaFavoritos);
-    }
-
-    @Override
-    public ArrayList <Email> getFavoritos(ArrayList <Email> bandejaFavoritos) {
-        return bandejaFavoritos;
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-    @Override
-    public void agregarFavoritos(Email emailFavorito, ArrayList <Email> bandejaFavoritos) {
-        bandejaFavoritos.add(emailFavorito);
-    }
-
-
-    
-
 
 }
