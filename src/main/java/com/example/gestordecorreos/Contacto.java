@@ -54,31 +54,34 @@
             return correo.matches(regex);
         }
         
-
         /////////////////////////
         @Override
         public void agregarFavoritos(Email emailFavorito) {
             
+            bandeja.setFavoritos(emailFavorito);
+
+            /*// Buscar en la bandeja de recibidos
             for (Email email : bandeja.getRecibidos()) {
 
                 if (email.equals(emailFavorito)) {
+
                     bandeja.setFavoritos(emailFavorito);
-                    return; // Se encontró y agregó, no es necesario seguir buscando
+                    return; // Se encontró y agregó, salimos del método
+
                 }
             }
-        
+
+            // Buscar en la bandeja de enviados si no se encontró en recibidos
             for (Email email : bandeja.getEnviados()) {
 
                 if (email.equals(emailFavorito)) {
+
                     bandeja.setFavoritos(emailFavorito);
-                    return;
+                    return; // Se encontró y agregó, salimos del método
                 }
-            }
+            }*/
         }
         
-        
-
-
         @Override
         public ArrayList <Email> getFavoritos(){
             return bandeja.getFavoritos();

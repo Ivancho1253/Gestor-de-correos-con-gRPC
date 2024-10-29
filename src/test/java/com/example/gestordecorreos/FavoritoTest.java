@@ -14,13 +14,12 @@ public class FavoritoTest {
 
         Contacto c1 = new Contacto("Augusto", "Ojeda", "augusto@ucp.com");
         Contacto c2 = new Contacto("Ivan", "Cabrera", "ivan@ucp.com");
-        //Contacto c3 = new Contacto("Rodrigo", "Magallanes", "rodrigo@ucp.com");
 
         List<Contacto> destinatarios = new ArrayList<>();
         destinatarios.add(c2);
 
-        Email e1 = new Email("prueba", "hola", c1, destinatarios);
-        Email e2 = new Email("prueba", "hola", c1, destinatarios);
+        Email e1 = new Email("prueba1", "hola", c1, destinatarios);
+        Email e2 = new Email("prueba2", "hola", c1, destinatarios);
 
         EmailManager em = new EmailManager();
         em.enviar(e1);
@@ -30,11 +29,10 @@ public class FavoritoTest {
         assertEquals(2, c2.bandeja.getRecibidos().size());
 
         c2.agregarFavoritos(e2);
-
-        assertEquals(1, c2.bandeja.getFavoritos().size());
-
-        //c3.marcarComoFavorito(e2);
+        c2.agregarFavoritos(e1);
         
+        assertEquals(2, c2.getFavoritos().size());
+
     }
 
 
