@@ -29,7 +29,7 @@ public class FavoritoTest {
         //Ivan marca en su bandeja de recibido un mensaje como favorito
         assertEquals(2, c2.bandeja.getRecibidos().size());
 
-        em.marcarComoFavorito(e2, c2.bandeja.getFavoritos());
+        em.marcarComoFavorito(e2, c2);
 
         assertEquals(1, c2.bandeja.favoritos.size());
         
