@@ -54,33 +54,66 @@
             return correo.matches(regex);
         }
         
+        @Override
+        public void agregarFavoritos(Email emailFavorito) {
+            // Buscar en la bandeja de recibidos
+            for (Email email : bandeja.getRecibidos()) {
+                if (compararEmails(email, emailFavorito)) {
+                    bandeja.setFavoritos(emailFavorito);
+                    break;
+                }
+            }
+
+            // Buscar en la bandeja de enviados
+            for (Email email : bandeja.getEnviados()) {
+                if (compararEmails(email, emailFavorito)) {
+                    bandeja.setFavoritos(emailFavorito);
+                    break;
+                }
+            }
+        }
+
+        private boolean compararEmails(Email email1, Email email2) {
+            // Comparamos los atributos clave de los emails
+            boolean mismoAsunto = email1.getAsunto().equals(email2.getAsunto());
+            boolean mismoCuerpo = email1.getContenido().equals(email2.getContenido());
+            boolean mismoRemitente = email1.getRemitente().equals(email2.getRemitente());
+
+            // Comparar los destinatarios
+            boolean mismosDestinatarios = email1.getDestinatarios().size() == email2.getDestinatarios().size() 
+                && email1.getDestinatarios().containsAll(email2.getDestinatarios());
+
+            // Si todos los atributos son iguales, entonces los emails son equivalentes
+            return mismoAsunto && mismoCuerpo && mismoRemitente && mismosDestinatarios;
+        }
+
+
+
+
+
+/* 
         /////////////////////////
         @Override
         public void agregarFavoritos(Email emailFavorito) {
             
-            bandeja.setFavoritos(emailFavorito);
+            // Buscar en la bandeja de recibidos
 
-            /*// Buscar en la bandeja de recibidos
             for (Email email : bandeja.getRecibidos()) {
-
                 if (email.equals(emailFavorito)) {
-
                     bandeja.setFavoritos(emailFavorito);
-                    return; // Se encontró y agregó, salimos del método
+                    break;
+                }
+                
+            }
 
+            for (Email email : bandeja.getEnviados()) {
+                if (email.equals(emailFavorito)) {
+                    bandeja.setFavoritos(emailFavorito);
+                    break;
                 }
             }
 
-            // Buscar en la bandeja de enviados si no se encontró en recibidos
-            for (Email email : bandeja.getEnviados()) {
-
-                if (email.equals(emailFavorito)) {
-
-                    bandeja.setFavoritos(emailFavorito);
-                    return; // Se encontró y agregó, salimos del método
-                }
-            }*/
-        }
+        }*/
         
         @Override
         public ArrayList <Email> getFavoritos(){

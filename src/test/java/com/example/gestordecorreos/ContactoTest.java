@@ -75,6 +75,7 @@ public class ContactoTest {
         GruposDeUsuarios grupo = new GruposDeUsuarios();
         
         grupo.agregarAlGrupo(c1);
+        grupo.agregarAlGrupo(c1);
         grupo.agregarAlGrupo(c2);
         
         assertEquals(2, grupo.obtenerMiembros().size());

@@ -13,8 +13,13 @@ public class GruposDeUsuarios {
 
    
     public void agregarAlGrupo(Contacto contacto) {
+
+        for (Contacto c : contactos) {
+            if (c.getCorreo().equals(contacto.getCorreo())) {
+                return;
+            }
+        }
         contactos.add(contacto);
-        
     }
 
     public List<Contacto> obtenerMiembros() {

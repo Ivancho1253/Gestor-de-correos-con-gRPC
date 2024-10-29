@@ -14,6 +14,7 @@ public class FavoritoTest {
 
         Contacto c1 = new Contacto("Augusto", "Ojeda", "augusto@ucp.com");
         Contacto c2 = new Contacto("Ivan", "Cabrera", "ivan@ucp.com");
+        Contacto c3 = new Contacto("Rodrigo","Magallanes", "rodri123@gmail.com");
 
         List<Contacto> destinatarios = new ArrayList<>();
         destinatarios.add(c2);
@@ -31,7 +32,10 @@ public class FavoritoTest {
         c2.agregarFavoritos(e2);
         c2.agregarFavoritos(e1);
         
+        c3.agregarFavoritos(e2);
+
         assertEquals(2, c2.getFavoritos().size());
+        assertEquals(0, c3.getFavoritos().size());
 
     }
 
