@@ -3,6 +3,9 @@ package com.example.gestordecorreos;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * Definición del servicio GrpsService
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.68.0)",
@@ -44,6 +47,37 @@ public final class GrpsServiceGrpc {
       }
     }
     return getSendEmailMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.GroupRequest,
+      com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGetGroupInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetGroupInfo",
+      requestType = com.example.gestordecorreos.GrpsServiceProto.GroupRequest.class,
+      responseType = com.example.gestordecorreos.GrpsServiceProto.GroupResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.GroupRequest,
+      com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGetGroupInfoMethod() {
+    io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.GroupRequest, com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGetGroupInfoMethod;
+    if ((getGetGroupInfoMethod = GrpsServiceGrpc.getGetGroupInfoMethod) == null) {
+      synchronized (GrpsServiceGrpc.class) {
+        if ((getGetGroupInfoMethod = GrpsServiceGrpc.getGetGroupInfoMethod) == null) {
+          GrpsServiceGrpc.getGetGroupInfoMethod = getGetGroupInfoMethod =
+              io.grpc.MethodDescriptor.<com.example.gestordecorreos.GrpsServiceProto.GroupRequest, com.example.gestordecorreos.GrpsServiceProto.GroupResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetGroupInfo"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gestordecorreos.GrpsServiceProto.GroupRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gestordecorreos.GrpsServiceProto.GroupResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GrpsServiceMethodDescriptorSupplier("GetGroupInfo"))
+              .build();
+        }
+      }
+    }
+    return getGetGroupInfoMethod;
   }
 
   /**
@@ -91,6 +125,9 @@ public final class GrpsServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Definición del servicio GrpsService
+   * </pre>
    */
   public interface AsyncService {
 
@@ -100,10 +137,20 @@ public final class GrpsServiceGrpc {
         io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Response> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSendEmailMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getGroupInfo(com.example.gestordecorreos.GrpsServiceProto.GroupRequest request,
+        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.GroupResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetGroupInfoMethod(), responseObserver);
+    }
   }
 
   /**
    * Base class for the server implementation of the service GrpsService.
+   * <pre>
+   * Definición del servicio GrpsService
+   * </pre>
    */
   public static abstract class GrpsServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -115,6 +162,9 @@ public final class GrpsServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service GrpsService.
+   * <pre>
+   * Definición del servicio GrpsService
+   * </pre>
    */
   public static final class GrpsServiceStub
       extends io.grpc.stub.AbstractAsyncStub<GrpsServiceStub> {
@@ -136,10 +186,21 @@ public final class GrpsServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSendEmailMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getGroupInfo(com.example.gestordecorreos.GrpsServiceProto.GroupRequest request,
+        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.GroupResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetGroupInfoMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service GrpsService.
+   * <pre>
+   * Definición del servicio GrpsService
+   * </pre>
    */
   public static final class GrpsServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<GrpsServiceBlockingStub> {
@@ -160,10 +221,20 @@ public final class GrpsServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSendEmailMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.example.gestordecorreos.GrpsServiceProto.GroupResponse getGroupInfo(com.example.gestordecorreos.GrpsServiceProto.GroupRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetGroupInfoMethod(), getCallOptions(), request);
+    }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service GrpsService.
+   * <pre>
+   * Definición del servicio GrpsService
+   * </pre>
    */
   public static final class GrpsServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<GrpsServiceFutureStub> {
@@ -185,9 +256,18 @@ public final class GrpsServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSendEmailMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGroupInfo(
+        com.example.gestordecorreos.GrpsServiceProto.GroupRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetGroupInfoMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SEND_EMAIL = 0;
+  private static final int METHODID_GET_GROUP_INFO = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -209,6 +289,10 @@ public final class GrpsServiceGrpc {
         case METHODID_SEND_EMAIL:
           serviceImpl.sendEmail((com.example.gestordecorreos.GrpsServiceProto.EmailRequest) request,
               (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Response>) responseObserver);
+          break;
+        case METHODID_GET_GROUP_INFO:
+          serviceImpl.getGroupInfo((com.example.gestordecorreos.GrpsServiceProto.GroupRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.GroupResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -235,6 +319,13 @@ public final class GrpsServiceGrpc {
               com.example.gestordecorreos.GrpsServiceProto.EmailRequest,
               com.example.gestordecorreos.GrpsServiceProto.Response>(
                 service, METHODID_SEND_EMAIL)))
+        .addMethod(
+          getGetGroupInfoMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.gestordecorreos.GrpsServiceProto.GroupRequest,
+              com.example.gestordecorreos.GrpsServiceProto.GroupResponse>(
+                service, METHODID_GET_GROUP_INFO)))
         .build();
   }
 
@@ -284,6 +375,7 @@ public final class GrpsServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new GrpsServiceFileDescriptorSupplier())
               .addMethod(getSendEmailMethod())
+              .addMethod(getGetGroupInfoMethod())
               .build();
         }
       }

@@ -5,10 +5,13 @@ option java_outer_classname = "GrpsServiceProto";
 
 package gestordecorreos;
 
+// Definición del servicio GrpsService
 service GrpsService {
   rpc SendEmail (EmailRequest) returns (Response);
+  rpc GetGroupInfo (GroupRequest) returns (GroupResponse);
 }
 
+// Mensaje de solicitud para enviar un correo
 message EmailRequest {
   string sender = 1;
   string recipient = 2;
@@ -16,6 +19,18 @@ message EmailRequest {
   string body = 4;
 }
 
+// Mensaje de respuesta para SendEmail
 message Response {
   string message = 1;
+}
+
+// Mensaje de solicitud para GetGroupInfo
+message GroupRequest {
+  string group_name = 1;
+}
+
+// Mensaje de respuesta para GetGroupInfo
+message GroupResponse {
+  string group_name = 1;
+  repeated string members = 2;
 }
