@@ -25,8 +25,12 @@ public class Bandeja {
         return favoritos;
     }
 
-    public void setFavoritos(ArrayList<Email> favoritos) {
-        this.favoritos = favoritos;
+    public void setFavoritos(Email emailFavorito){
+
+        if (!favoritos.contains(emailFavorito)) {
+            favoritos.add(emailFavorito);
+        }
+           
     }
 
     

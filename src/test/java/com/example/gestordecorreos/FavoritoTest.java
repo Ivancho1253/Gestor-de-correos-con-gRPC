@@ -14,13 +14,13 @@ public class FavoritoTest {
 
         Contacto c1 = new Contacto("Augusto", "Ojeda", "augusto@ucp.com");
         Contacto c2 = new Contacto("Ivan", "Cabrera", "ivan@ucp.com");
-        //Contacto c3 = new Contacto("Rodrigo", "Magallanes", "rodrigo@ucp.com");
+        Contacto c3 = new Contacto("Rodrigo","Magallanes", "rodri123@gmail.com");
 
         List<Contacto> destinatarios = new ArrayList<>();
         destinatarios.add(c2);
 
-        Email e1 = new Email("prueba", "hola", c1, destinatarios);
-        Email e2 = new Email("prueba", "hola", c1, destinatarios);
+        Email e1 = new Email("prueba1", "hola", c1, destinatarios);
+        Email e2 = new Email("prueba2", "hola", c1, destinatarios);
 
         EmailManager em = new EmailManager();
         em.enviar(e1);
@@ -29,21 +29,14 @@ public class FavoritoTest {
         //Ivan marca en su bandeja de recibido un mensaje como favorito
         assertEquals(2, c2.bandeja.getRecibidos().size());
 
-        em.marcarComoFavorito(e2, c2.bandeja.getFavoritos());
-
-        assertEquals(1, c2.bandeja.favoritos.size());
+        c2.agregarFavoritos(e2);
+        c2.agregarFavoritos(e1);
         
-        //Augusto marca en su bandeja de enviado un mensaje como favorito
-        assertEquals(2, c1.bandeja.getEnviados().size());
+        c3.agregarFavoritos(e2);
 
-        em.marcarComoFavorito(c1.bandeja.getEnviados().get(0), c1.bandeja.getFavoritos());
+        assertEquals(2, c2.getFavoritos().size());
+        assertEquals(0, c3.getFavoritos().size());
 
-        assertEquals(1, c1.bandeja.favoritos.size());
-
-        //em.marcarComoFavorito(c3.bandeja.getEnviados().get(0), c3.bandeja.getFavoritos());
-
-        
-        
     }
 
 
