@@ -31,7 +31,7 @@ public class FavoritoTest {
 
         c2.agregarFavoritos(e2);
         c2.agregarFavoritos(e1);
-        
+
         c3.agregarFavoritos(e2);
 
         assertEquals(2, c2.getFavoritos().size());
@@ -39,5 +39,7 @@ public class FavoritoTest {
 
     }
 
+
+// se corrigio el merge de favoritos
 
 }

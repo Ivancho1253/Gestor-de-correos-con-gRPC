@@ -1,4 +1,4 @@
-    package com.example.gestordecorreos;
+package com.example.gestordecorreos;
     import java.util.ArrayList;
 
     public class Contacto 
