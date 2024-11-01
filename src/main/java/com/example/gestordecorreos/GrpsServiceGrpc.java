@@ -3,13 +3,10 @@ package com.example.gestordecorreos;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
- * <pre>
- * Definición del servicio GrpsService
- * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.68.0)",
-    comments = "Source: GrpsService.proto")
+    comments = "Source: src/main/proto/GrpsService.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class GrpsServiceGrpc {
 
@@ -18,35 +15,35 @@ public final class GrpsServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "gestordecorreos.GrpsService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.Request,
-      com.example.gestordecorreos.GrpsServiceProto.Response> getYourMethodMethod;
+  private static volatile io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.EmailRequest,
+      com.example.gestordecorreos.GrpsServiceProto.Response> getSendEmailMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "YourMethod",
-      requestType = com.example.gestordecorreos.GrpsServiceProto.Request.class,
+      fullMethodName = SERVICE_NAME + '/' + "SendEmail",
+      requestType = com.example.gestordecorreos.GrpsServiceProto.EmailRequest.class,
       responseType = com.example.gestordecorreos.GrpsServiceProto.Response.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.Request,
-      com.example.gestordecorreos.GrpsServiceProto.Response> getYourMethodMethod() {
-    io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.Request, com.example.gestordecorreos.GrpsServiceProto.Response> getYourMethodMethod;
-    if ((getYourMethodMethod = GrpsServiceGrpc.getYourMethodMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.EmailRequest,
+      com.example.gestordecorreos.GrpsServiceProto.Response> getSendEmailMethod() {
+    io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.EmailRequest, com.example.gestordecorreos.GrpsServiceProto.Response> getSendEmailMethod;
+    if ((getSendEmailMethod = GrpsServiceGrpc.getSendEmailMethod) == null) {
       synchronized (GrpsServiceGrpc.class) {
-        if ((getYourMethodMethod = GrpsServiceGrpc.getYourMethodMethod) == null) {
-          GrpsServiceGrpc.getYourMethodMethod = getYourMethodMethod =
-              io.grpc.MethodDescriptor.<com.example.gestordecorreos.GrpsServiceProto.Request, com.example.gestordecorreos.GrpsServiceProto.Response>newBuilder()
+        if ((getSendEmailMethod = GrpsServiceGrpc.getSendEmailMethod) == null) {
+          GrpsServiceGrpc.getSendEmailMethod = getSendEmailMethod =
+              io.grpc.MethodDescriptor.<com.example.gestordecorreos.GrpsServiceProto.EmailRequest, com.example.gestordecorreos.GrpsServiceProto.Response>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "YourMethod"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SendEmail"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gestordecorreos.GrpsServiceProto.Request.getDefaultInstance()))
+                  com.example.gestordecorreos.GrpsServiceProto.EmailRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.example.gestordecorreos.GrpsServiceProto.Response.getDefaultInstance()))
-              .setSchemaDescriptor(new GrpsServiceMethodDescriptorSupplier("YourMethod"))
+              .setSchemaDescriptor(new GrpsServiceMethodDescriptorSupplier("SendEmail"))
               .build();
         }
       }
     }
-    return getYourMethodMethod;
+    return getSendEmailMethod;
   }
 
   /**
@@ -94,25 +91,19 @@ public final class GrpsServiceGrpc {
   }
 
   /**
-   * <pre>
-   * Definición del servicio GrpsService
-   * </pre>
    */
   public interface AsyncService {
 
     /**
      */
-    default void yourMethod(com.example.gestordecorreos.GrpsServiceProto.Request request,
+    default void sendEmail(com.example.gestordecorreos.GrpsServiceProto.EmailRequest request,
         io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Response> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getYourMethodMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSendEmailMethod(), responseObserver);
     }
   }
 
   /**
    * Base class for the server implementation of the service GrpsService.
-   * <pre>
-   * Definición del servicio GrpsService
-   * </pre>
    */
   public static abstract class GrpsServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -124,9 +115,6 @@ public final class GrpsServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service GrpsService.
-   * <pre>
-   * Definición del servicio GrpsService
-   * </pre>
    */
   public static final class GrpsServiceStub
       extends io.grpc.stub.AbstractAsyncStub<GrpsServiceStub> {
@@ -143,18 +131,15 @@ public final class GrpsServiceGrpc {
 
     /**
      */
-    public void yourMethod(com.example.gestordecorreos.GrpsServiceProto.Request request,
+    public void sendEmail(com.example.gestordecorreos.GrpsServiceProto.EmailRequest request,
         io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Response> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getYourMethodMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getSendEmailMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service GrpsService.
-   * <pre>
-   * Definición del servicio GrpsService
-   * </pre>
    */
   public static final class GrpsServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<GrpsServiceBlockingStub> {
@@ -171,17 +156,14 @@ public final class GrpsServiceGrpc {
 
     /**
      */
-    public com.example.gestordecorreos.GrpsServiceProto.Response yourMethod(com.example.gestordecorreos.GrpsServiceProto.Request request) {
+    public com.example.gestordecorreos.GrpsServiceProto.Response sendEmail(com.example.gestordecorreos.GrpsServiceProto.EmailRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getYourMethodMethod(), getCallOptions(), request);
+          getChannel(), getSendEmailMethod(), getCallOptions(), request);
     }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service GrpsService.
-   * <pre>
-   * Definición del servicio GrpsService
-   * </pre>
    */
   public static final class GrpsServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<GrpsServiceFutureStub> {
@@ -198,14 +180,14 @@ public final class GrpsServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.example.gestordecorreos.GrpsServiceProto.Response> yourMethod(
-        com.example.gestordecorreos.GrpsServiceProto.Request request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gestordecorreos.GrpsServiceProto.Response> sendEmail(
+        com.example.gestordecorreos.GrpsServiceProto.EmailRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getYourMethodMethod(), getCallOptions()), request);
+          getChannel().newCall(getSendEmailMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_YOUR_METHOD = 0;
+  private static final int METHODID_SEND_EMAIL = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -224,8 +206,8 @@ public final class GrpsServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_YOUR_METHOD:
-          serviceImpl.yourMethod((com.example.gestordecorreos.GrpsServiceProto.Request) request,
+        case METHODID_SEND_EMAIL:
+          serviceImpl.sendEmail((com.example.gestordecorreos.GrpsServiceProto.EmailRequest) request,
               (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Response>) responseObserver);
           break;
         default:
@@ -247,12 +229,12 @@ public final class GrpsServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getYourMethodMethod(),
+          getSendEmailMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.example.gestordecorreos.GrpsServiceProto.Request,
+              com.example.gestordecorreos.GrpsServiceProto.EmailRequest,
               com.example.gestordecorreos.GrpsServiceProto.Response>(
-                service, METHODID_YOUR_METHOD)))
+                service, METHODID_SEND_EMAIL)))
         .build();
   }
 
@@ -301,7 +283,7 @@ public final class GrpsServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new GrpsServiceFileDescriptorSupplier())
-              .addMethod(getYourMethodMethod())
+              .addMethod(getSendEmailMethod())
               .build();
         }
       }

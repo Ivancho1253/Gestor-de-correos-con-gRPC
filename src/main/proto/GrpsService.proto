@@ -1,33 +1,21 @@
 syntax = "proto3";
 
-option java_package = "com.example.gestordecorreos";  // Define el paquete para el código generado en Java
-option java_outer_classname = "GrpsServiceProto";      // Nombre de la clase generada
+option java_package = "com.example.gestordecorreos";
+option java_outer_classname = "GrpsServiceProto";
 
 package gestordecorreos;
 
-// Definición del servicio GrpsService
 service GrpsService {
-  rpc YourMethod (Request) returns (Response);
-  rpc GetGroupInfo (GroupRequest) returns (GroupResponse);
+  rpc SendEmail (EmailRequest) returns (Response);
 }
 
-// Mensaje de solicitud para YourMethod
-message Request {
-  string message = 1;
+message EmailRequest {
+  string sender = 1;
+  string recipient = 2;
+  string subject = 3;
+  string body = 4;
 }
 
-// Mensaje de respuesta para YourMethod
 message Response {
   string message = 1;
-}
-
-// Mensaje de solicitud para GetGroupInfo
-message GroupRequest {
-  string group_name = 1;
-}
-
-// Mensaje de respuesta para GetGroupInfo
-message GroupResponse {
-  string group_name = 1;
-  repeated string members = 2;
 }
