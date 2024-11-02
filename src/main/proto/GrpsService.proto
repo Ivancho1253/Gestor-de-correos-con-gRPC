@@ -7,8 +7,9 @@ package gestordecorreos;
 
 // Definición del servicio GrpsService
 service GrpsService {
-  rpc SendEmail (EmailRequest) returns (Response);
-  rpc GetInbox (InboxRequest) returns (InboxResponse); // Método para obtener la bandeja de entrada
+  rpc SendEmail (EmailRequest) returns (Response);            // Enviar un correo
+  rpc GetInbox (InboxRequest) returns (InboxResponse);        // Obtener la bandeja de entrada
+  rpc GetSentEmails (SentRequest) returns (SentResponse);     // Obtener los correos enviados
 }
 
 // Mensaje de solicitud para enviar un correo
@@ -32,6 +33,16 @@ message InboxRequest {
 // Mensaje de respuesta para GetInbox
 message InboxResponse {
   repeated Email emails = 1; // Lista de correos en la bandeja de entrada
+}
+
+// Mensaje de solicitud para GetSentEmails
+message SentRequest {
+  string sender = 1; // Usuario que consulta sus correos enviados
+}
+
+// Mensaje de respuesta para GetSentEmails
+message SentResponse {
+  repeated Email emails = 1; // Lista de correos enviados
 }
 
 // Mensaje de correo

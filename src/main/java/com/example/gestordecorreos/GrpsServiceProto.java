@@ -2919,6 +2919,1420 @@ public final class GrpsServiceProto {
 
   }
 
+  public interface SentRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:gestordecorreos.SentRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Usuario que consulta sus correos enviados
+     * </pre>
+     *
+     * <code>string sender = 1;</code>
+     * @return The sender.
+     */
+    java.lang.String getSender();
+    /**
+     * <pre>
+     * Usuario que consulta sus correos enviados
+     * </pre>
+     *
+     * <code>string sender = 1;</code>
+     * @return The bytes for sender.
+     */
+    com.google.protobuf.ByteString
+        getSenderBytes();
+  }
+  /**
+   * <pre>
+   * Mensaje de solicitud para GetSentEmails
+   * </pre>
+   *
+   * Protobuf type {@code gestordecorreos.SentRequest}
+   */
+  public static final class SentRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:gestordecorreos.SentRequest)
+      SentRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        SentRequest.class.getName());
+    }
+    // Use SentRequest.newBuilder() to construct.
+    private SentRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SentRequest() {
+      sender_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.gestordecorreos.GrpsServiceProto.SentRequest.class, com.example.gestordecorreos.GrpsServiceProto.SentRequest.Builder.class);
+    }
+
+    public static final int SENDER_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sender_ = "";
+    /**
+     * <pre>
+     * Usuario que consulta sus correos enviados
+     * </pre>
+     *
+     * <code>string sender = 1;</code>
+     * @return The sender.
+     */
+    @java.lang.Override
+    public java.lang.String getSender() {
+      java.lang.Object ref = sender_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sender_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Usuario que consulta sus correos enviados
+     * </pre>
+     *
+     * <code>string sender = 1;</code>
+     * @return The bytes for sender.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSenderBytes() {
+      java.lang.Object ref = sender_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sender_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(sender_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, sender_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(sender_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, sender_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.gestordecorreos.GrpsServiceProto.SentRequest)) {
+        return super.equals(obj);
+      }
+      com.example.gestordecorreos.GrpsServiceProto.SentRequest other = (com.example.gestordecorreos.GrpsServiceProto.SentRequest) obj;
+
+      if (!getSender()
+          .equals(other.getSender())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SENDER_FIELD_NUMBER;
+      hash = (53 * hash) + getSender().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.gestordecorreos.GrpsServiceProto.SentRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Mensaje de solicitud para GetSentEmails
+     * </pre>
+     *
+     * Protobuf type {@code gestordecorreos.SentRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:gestordecorreos.SentRequest)
+        com.example.gestordecorreos.GrpsServiceProto.SentRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.gestordecorreos.GrpsServiceProto.SentRequest.class, com.example.gestordecorreos.GrpsServiceProto.SentRequest.Builder.class);
+      }
+
+      // Construct using com.example.gestordecorreos.GrpsServiceProto.SentRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        sender_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SentRequest getDefaultInstanceForType() {
+        return com.example.gestordecorreos.GrpsServiceProto.SentRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SentRequest build() {
+        com.example.gestordecorreos.GrpsServiceProto.SentRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SentRequest buildPartial() {
+        com.example.gestordecorreos.GrpsServiceProto.SentRequest result = new com.example.gestordecorreos.GrpsServiceProto.SentRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.example.gestordecorreos.GrpsServiceProto.SentRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.sender_ = sender_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.gestordecorreos.GrpsServiceProto.SentRequest) {
+          return mergeFrom((com.example.gestordecorreos.GrpsServiceProto.SentRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.gestordecorreos.GrpsServiceProto.SentRequest other) {
+        if (other == com.example.gestordecorreos.GrpsServiceProto.SentRequest.getDefaultInstance()) return this;
+        if (!other.getSender().isEmpty()) {
+          sender_ = other.sender_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                sender_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object sender_ = "";
+      /**
+       * <pre>
+       * Usuario que consulta sus correos enviados
+       * </pre>
+       *
+       * <code>string sender = 1;</code>
+       * @return The sender.
+       */
+      public java.lang.String getSender() {
+        java.lang.Object ref = sender_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sender_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Usuario que consulta sus correos enviados
+       * </pre>
+       *
+       * <code>string sender = 1;</code>
+       * @return The bytes for sender.
+       */
+      public com.google.protobuf.ByteString
+          getSenderBytes() {
+        java.lang.Object ref = sender_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sender_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Usuario que consulta sus correos enviados
+       * </pre>
+       *
+       * <code>string sender = 1;</code>
+       * @param value The sender to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSender(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sender_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Usuario que consulta sus correos enviados
+       * </pre>
+       *
+       * <code>string sender = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSender() {
+        sender_ = getDefaultInstance().getSender();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Usuario que consulta sus correos enviados
+       * </pre>
+       *
+       * <code>string sender = 1;</code>
+       * @param value The bytes for sender to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sender_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:gestordecorreos.SentRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:gestordecorreos.SentRequest)
+    private static final com.example.gestordecorreos.GrpsServiceProto.SentRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.gestordecorreos.GrpsServiceProto.SentRequest();
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SentRequest>
+        PARSER = new com.google.protobuf.AbstractParser<SentRequest>() {
+      @java.lang.Override
+      public SentRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SentRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SentRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.gestordecorreos.GrpsServiceProto.SentRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SentResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:gestordecorreos.SentResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    java.util.List<com.example.gestordecorreos.GrpsServiceProto.Email> 
+        getEmailsList();
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    com.example.gestordecorreos.GrpsServiceProto.Email getEmails(int index);
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    int getEmailsCount();
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    java.util.List<? extends com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder> 
+        getEmailsOrBuilderList();
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder getEmailsOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * Mensaje de respuesta para GetSentEmails
+   * </pre>
+   *
+   * Protobuf type {@code gestordecorreos.SentResponse}
+   */
+  public static final class SentResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:gestordecorreos.SentResponse)
+      SentResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        SentResponse.class.getName());
+    }
+    // Use SentResponse.newBuilder() to construct.
+    private SentResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SentResponse() {
+      emails_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.gestordecorreos.GrpsServiceProto.SentResponse.class, com.example.gestordecorreos.GrpsServiceProto.SentResponse.Builder.class);
+    }
+
+    public static final int EMAILS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<com.example.gestordecorreos.GrpsServiceProto.Email> emails_;
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.example.gestordecorreos.GrpsServiceProto.Email> getEmailsList() {
+      return emails_;
+    }
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder> 
+        getEmailsOrBuilderList() {
+      return emails_;
+    }
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    @java.lang.Override
+    public int getEmailsCount() {
+      return emails_.size();
+    }
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    @java.lang.Override
+    public com.example.gestordecorreos.GrpsServiceProto.Email getEmails(int index) {
+      return emails_.get(index);
+    }
+    /**
+     * <pre>
+     * Lista de correos enviados
+     * </pre>
+     *
+     * <code>repeated .gestordecorreos.Email emails = 1;</code>
+     */
+    @java.lang.Override
+    public com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder getEmailsOrBuilder(
+        int index) {
+      return emails_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < emails_.size(); i++) {
+        output.writeMessage(1, emails_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < emails_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, emails_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.gestordecorreos.GrpsServiceProto.SentResponse)) {
+        return super.equals(obj);
+      }
+      com.example.gestordecorreos.GrpsServiceProto.SentResponse other = (com.example.gestordecorreos.GrpsServiceProto.SentResponse) obj;
+
+      if (!getEmailsList()
+          .equals(other.getEmailsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getEmailsCount() > 0) {
+        hash = (37 * hash) + EMAILS_FIELD_NUMBER;
+        hash = (53 * hash) + getEmailsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.gestordecorreos.GrpsServiceProto.SentResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Mensaje de respuesta para GetSentEmails
+     * </pre>
+     *
+     * Protobuf type {@code gestordecorreos.SentResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:gestordecorreos.SentResponse)
+        com.example.gestordecorreos.GrpsServiceProto.SentResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.gestordecorreos.GrpsServiceProto.SentResponse.class, com.example.gestordecorreos.GrpsServiceProto.SentResponse.Builder.class);
+      }
+
+      // Construct using com.example.gestordecorreos.GrpsServiceProto.SentResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (emailsBuilder_ == null) {
+          emails_ = java.util.Collections.emptyList();
+        } else {
+          emails_ = null;
+          emailsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SentResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SentResponse getDefaultInstanceForType() {
+        return com.example.gestordecorreos.GrpsServiceProto.SentResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SentResponse build() {
+        com.example.gestordecorreos.GrpsServiceProto.SentResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SentResponse buildPartial() {
+        com.example.gestordecorreos.GrpsServiceProto.SentResponse result = new com.example.gestordecorreos.GrpsServiceProto.SentResponse(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.example.gestordecorreos.GrpsServiceProto.SentResponse result) {
+        if (emailsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            emails_ = java.util.Collections.unmodifiableList(emails_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.emails_ = emails_;
+        } else {
+          result.emails_ = emailsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.example.gestordecorreos.GrpsServiceProto.SentResponse result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.gestordecorreos.GrpsServiceProto.SentResponse) {
+          return mergeFrom((com.example.gestordecorreos.GrpsServiceProto.SentResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.gestordecorreos.GrpsServiceProto.SentResponse other) {
+        if (other == com.example.gestordecorreos.GrpsServiceProto.SentResponse.getDefaultInstance()) return this;
+        if (emailsBuilder_ == null) {
+          if (!other.emails_.isEmpty()) {
+            if (emails_.isEmpty()) {
+              emails_ = other.emails_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEmailsIsMutable();
+              emails_.addAll(other.emails_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.emails_.isEmpty()) {
+            if (emailsBuilder_.isEmpty()) {
+              emailsBuilder_.dispose();
+              emailsBuilder_ = null;
+              emails_ = other.emails_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              emailsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getEmailsFieldBuilder() : null;
+            } else {
+              emailsBuilder_.addAllMessages(other.emails_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.example.gestordecorreos.GrpsServiceProto.Email m =
+                    input.readMessage(
+                        com.example.gestordecorreos.GrpsServiceProto.Email.parser(),
+                        extensionRegistry);
+                if (emailsBuilder_ == null) {
+                  ensureEmailsIsMutable();
+                  emails_.add(m);
+                } else {
+                  emailsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.example.gestordecorreos.GrpsServiceProto.Email> emails_ =
+        java.util.Collections.emptyList();
+      private void ensureEmailsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          emails_ = new java.util.ArrayList<com.example.gestordecorreos.GrpsServiceProto.Email>(emails_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.example.gestordecorreos.GrpsServiceProto.Email, com.example.gestordecorreos.GrpsServiceProto.Email.Builder, com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder> emailsBuilder_;
+
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public java.util.List<com.example.gestordecorreos.GrpsServiceProto.Email> getEmailsList() {
+        if (emailsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(emails_);
+        } else {
+          return emailsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public int getEmailsCount() {
+        if (emailsBuilder_ == null) {
+          return emails_.size();
+        } else {
+          return emailsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public com.example.gestordecorreos.GrpsServiceProto.Email getEmails(int index) {
+        if (emailsBuilder_ == null) {
+          return emails_.get(index);
+        } else {
+          return emailsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder setEmails(
+          int index, com.example.gestordecorreos.GrpsServiceProto.Email value) {
+        if (emailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEmailsIsMutable();
+          emails_.set(index, value);
+          onChanged();
+        } else {
+          emailsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder setEmails(
+          int index, com.example.gestordecorreos.GrpsServiceProto.Email.Builder builderForValue) {
+        if (emailsBuilder_ == null) {
+          ensureEmailsIsMutable();
+          emails_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          emailsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder addEmails(com.example.gestordecorreos.GrpsServiceProto.Email value) {
+        if (emailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEmailsIsMutable();
+          emails_.add(value);
+          onChanged();
+        } else {
+          emailsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder addEmails(
+          int index, com.example.gestordecorreos.GrpsServiceProto.Email value) {
+        if (emailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEmailsIsMutable();
+          emails_.add(index, value);
+          onChanged();
+        } else {
+          emailsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder addEmails(
+          com.example.gestordecorreos.GrpsServiceProto.Email.Builder builderForValue) {
+        if (emailsBuilder_ == null) {
+          ensureEmailsIsMutable();
+          emails_.add(builderForValue.build());
+          onChanged();
+        } else {
+          emailsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder addEmails(
+          int index, com.example.gestordecorreos.GrpsServiceProto.Email.Builder builderForValue) {
+        if (emailsBuilder_ == null) {
+          ensureEmailsIsMutable();
+          emails_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          emailsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder addAllEmails(
+          java.lang.Iterable<? extends com.example.gestordecorreos.GrpsServiceProto.Email> values) {
+        if (emailsBuilder_ == null) {
+          ensureEmailsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, emails_);
+          onChanged();
+        } else {
+          emailsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder clearEmails() {
+        if (emailsBuilder_ == null) {
+          emails_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          emailsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public Builder removeEmails(int index) {
+        if (emailsBuilder_ == null) {
+          ensureEmailsIsMutable();
+          emails_.remove(index);
+          onChanged();
+        } else {
+          emailsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public com.example.gestordecorreos.GrpsServiceProto.Email.Builder getEmailsBuilder(
+          int index) {
+        return getEmailsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder getEmailsOrBuilder(
+          int index) {
+        if (emailsBuilder_ == null) {
+          return emails_.get(index);  } else {
+          return emailsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public java.util.List<? extends com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder> 
+           getEmailsOrBuilderList() {
+        if (emailsBuilder_ != null) {
+          return emailsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(emails_);
+        }
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public com.example.gestordecorreos.GrpsServiceProto.Email.Builder addEmailsBuilder() {
+        return getEmailsFieldBuilder().addBuilder(
+            com.example.gestordecorreos.GrpsServiceProto.Email.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public com.example.gestordecorreos.GrpsServiceProto.Email.Builder addEmailsBuilder(
+          int index) {
+        return getEmailsFieldBuilder().addBuilder(
+            index, com.example.gestordecorreos.GrpsServiceProto.Email.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Lista de correos enviados
+       * </pre>
+       *
+       * <code>repeated .gestordecorreos.Email emails = 1;</code>
+       */
+      public java.util.List<com.example.gestordecorreos.GrpsServiceProto.Email.Builder> 
+           getEmailsBuilderList() {
+        return getEmailsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.example.gestordecorreos.GrpsServiceProto.Email, com.example.gestordecorreos.GrpsServiceProto.Email.Builder, com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder> 
+          getEmailsFieldBuilder() {
+        if (emailsBuilder_ == null) {
+          emailsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.example.gestordecorreos.GrpsServiceProto.Email, com.example.gestordecorreos.GrpsServiceProto.Email.Builder, com.example.gestordecorreos.GrpsServiceProto.EmailOrBuilder>(
+                  emails_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          emails_ = null;
+        }
+        return emailsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:gestordecorreos.SentResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:gestordecorreos.SentResponse)
+    private static final com.example.gestordecorreos.GrpsServiceProto.SentResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.gestordecorreos.GrpsServiceProto.SentResponse();
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SentResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SentResponse>
+        PARSER = new com.google.protobuf.AbstractParser<SentResponse>() {
+      @java.lang.Override
+      public SentResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SentResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SentResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.gestordecorreos.GrpsServiceProto.SentResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface EmailOrBuilder extends
       // @@protoc_insertion_point(interface_extends:gestordecorreos.Email)
       com.google.protobuf.MessageOrBuilder {
@@ -3975,6 +5389,16 @@ public final class GrpsServiceProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_gestordecorreos_InboxResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gestordecorreos_SentRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_gestordecorreos_SentRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gestordecorreos_SentResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_gestordecorreos_SentResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_gestordecorreos_Email_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -3994,15 +5418,19 @@ public final class GrpsServiceProto {
       "\014\n\004body\030\004 \001(\t\"\033\n\010Response\022\017\n\007message\030\001 \001" +
       "(\t\"!\n\014InboxRequest\022\021\n\trecipient\030\001 \001(\t\"7\n" +
       "\rInboxResponse\022&\n\006emails\030\001 \003(\0132\026.gestord" +
-      "ecorreos.Email\"W\n\005Email\022\016\n\006sender\030\001 \001(\t\022" +
-      "\021\n\trecipient\030\002 \001(\t\022\017\n\007subject\030\003 \001(\t\022\014\n\004b" +
-      "ody\030\004 \001(\t\022\014\n\004read\030\005 \001(\0102\237\001\n\013GrpsService\022" +
-      "E\n\tSendEmail\022\035.gestordecorreos.EmailRequ" +
-      "est\032\031.gestordecorreos.Response\022I\n\010GetInb" +
-      "ox\022\035.gestordecorreos.InboxRequest\032\036.gest" +
-      "ordecorreos.InboxResponseB/\n\033com.example" +
-      ".gestordecorreosB\020GrpsServiceProtob\006prot" +
-      "o3"
+      "ecorreos.Email\"\035\n\013SentRequest\022\016\n\006sender\030" +
+      "\001 \001(\t\"6\n\014SentResponse\022&\n\006emails\030\001 \003(\0132\026." +
+      "gestordecorreos.Email\"W\n\005Email\022\016\n\006sender" +
+      "\030\001 \001(\t\022\021\n\trecipient\030\002 \001(\t\022\017\n\007subject\030\003 \001" +
+      "(\t\022\014\n\004body\030\004 \001(\t\022\014\n\004read\030\005 \001(\0102\355\001\n\013GrpsS" +
+      "ervice\022E\n\tSendEmail\022\035.gestordecorreos.Em" +
+      "ailRequest\032\031.gestordecorreos.Response\022I\n" +
+      "\010GetInbox\022\035.gestordecorreos.InboxRequest" +
+      "\032\036.gestordecorreos.InboxResponse\022L\n\rGetS" +
+      "entEmails\022\034.gestordecorreos.SentRequest\032" +
+      "\035.gestordecorreos.SentResponseB/\n\033com.ex" +
+      "ample.gestordecorreosB\020GrpsServiceProtob" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4032,8 +5460,20 @@ public final class GrpsServiceProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_InboxResponse_descriptor,
         new java.lang.String[] { "Emails", });
-    internal_static_gestordecorreos_Email_descriptor =
+    internal_static_gestordecorreos_SentRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_gestordecorreos_SentRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_gestordecorreos_SentRequest_descriptor,
+        new java.lang.String[] { "Sender", });
+    internal_static_gestordecorreos_SentResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_gestordecorreos_SentResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_gestordecorreos_SentResponse_descriptor,
+        new java.lang.String[] { "Emails", });
+    internal_static_gestordecorreos_Email_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_gestordecorreos_Email_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_Email_descriptor,
