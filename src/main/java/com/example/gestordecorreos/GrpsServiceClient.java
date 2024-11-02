@@ -27,22 +27,26 @@ public class GrpsServiceClient {
                 .setBody(body)
                 .build();
 
-        try {
-            // Llama al método sendEmail y obtiene la respuesta
-            GrpsServiceProto.Response response = blockingStub.sendEmail(request);
-            System.out.println("Email enviado:\n" + response.getMessage());
-        } catch (StatusRuntimeException e) {
-            System.err.println("Error de RPC: " + e.getStatus());
-        }
+            try {
+                GrpsServiceProto.Response response = blockingStub.sendEmail(request);
+                System.out.println("Email enviado:");
+                System.out.println(String.format("De: %s\nPara: %s\nAsunto: %s\nMensaje: %s\n",
+                        sender, recipient, subject, body));
+            } catch (StatusRuntimeException e) {
+                System.err.println("Error de RPC: " + e.getStatus());
+            }
     }
 
     public static void main(String[] args) {
         GrpsServiceClient client = new GrpsServiceClient("localhost", 50051);
 
         // Envía un email de prueba
-        client.sendEmail("rodriUCP@gmail.com\n", 
-                        "AugustoUCP@gmail.com\n",
-                        "Tenemos que realizar lo de fisica\n", 
-                        "Vamos a juntarnos el 05/11 a hacer lo de fisica.\n");
+        client.sendEmail("rodriUCP@gmail.com", 
+                        "IvanUCP@gmail.com",
+                        "Tenemos que realizar lo de fisica", 
+                        "Vamos a juntarnos el 05/11 a hacer lo de fisica.");
+        //Cliente3 "IvanUCP@gmail.com"
+        //Cliente2 "AugustoUCP@gmail.com"
     }
+    
 }
