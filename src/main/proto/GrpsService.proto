@@ -40,4 +40,5 @@ message Email {
   string recipient = 2;
   string subject = 3;
   string body = 4;
+  bool read = 5;
 }

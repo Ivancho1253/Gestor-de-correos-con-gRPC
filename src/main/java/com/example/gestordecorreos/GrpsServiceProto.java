@@ -2970,6 +2970,12 @@ public final class GrpsServiceProto {
      */
     com.google.protobuf.ByteString
         getBodyBytes();
+
+    /**
+     * <code>bool read = 5;</code>
+     * @return The read.
+     */
+    boolean getRead();
   }
   /**
    * <pre>
@@ -3172,6 +3178,17 @@ public final class GrpsServiceProto {
       }
     }
 
+    public static final int READ_FIELD_NUMBER = 5;
+    private boolean read_ = false;
+    /**
+     * <code>bool read = 5;</code>
+     * @return The read.
+     */
+    @java.lang.Override
+    public boolean getRead() {
+      return read_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3198,6 +3215,9 @@ public final class GrpsServiceProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(body_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, body_);
       }
+      if (read_ != false) {
+        output.writeBool(5, read_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3218,6 +3238,10 @@ public final class GrpsServiceProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(body_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, body_);
+      }
+      if (read_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, read_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3242,6 +3266,8 @@ public final class GrpsServiceProto {
           .equals(other.getSubject())) return false;
       if (!getBody()
           .equals(other.getBody())) return false;
+      if (getRead()
+          != other.getRead()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3261,6 +3287,9 @@ public final class GrpsServiceProto {
       hash = (53 * hash) + getSubject().hashCode();
       hash = (37 * hash) + BODY_FIELD_NUMBER;
       hash = (53 * hash) + getBody().hashCode();
+      hash = (37 * hash) + READ_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getRead());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3400,6 +3429,7 @@ public final class GrpsServiceProto {
         recipient_ = "";
         subject_ = "";
         body_ = "";
+        read_ = false;
         return this;
       }
 
@@ -3445,6 +3475,9 @@ public final class GrpsServiceProto {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.body_ = body_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.read_ = read_;
+        }
       }
 
       @java.lang.Override
@@ -3478,6 +3511,9 @@ public final class GrpsServiceProto {
           body_ = other.body_;
           bitField0_ |= 0x00000008;
           onChanged();
+        }
+        if (other.getRead() != false) {
+          setRead(other.getRead());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -3525,6 +3561,11 @@ public final class GrpsServiceProto {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 40: {
+                read_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3830,6 +3871,38 @@ public final class GrpsServiceProto {
         return this;
       }
 
+      private boolean read_ ;
+      /**
+       * <code>bool read = 5;</code>
+       * @return The read.
+       */
+      @java.lang.Override
+      public boolean getRead() {
+        return read_;
+      }
+      /**
+       * <code>bool read = 5;</code>
+       * @param value The read to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRead(boolean value) {
+
+        read_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool read = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRead() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        read_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:gestordecorreos.Email)
     }
 
@@ -3921,14 +3994,15 @@ public final class GrpsServiceProto {
       "\014\n\004body\030\004 \001(\t\"\033\n\010Response\022\017\n\007message\030\001 \001" +
       "(\t\"!\n\014InboxRequest\022\021\n\trecipient\030\001 \001(\t\"7\n" +
       "\rInboxResponse\022&\n\006emails\030\001 \003(\0132\026.gestord" +
-      "ecorreos.Email\"I\n\005Email\022\016\n\006sender\030\001 \001(\t\022" +
+      "ecorreos.Email\"W\n\005Email\022\016\n\006sender\030\001 \001(\t\022" +
       "\021\n\trecipient\030\002 \001(\t\022\017\n\007subject\030\003 \001(\t\022\014\n\004b" +
-      "ody\030\004 \001(\t2\237\001\n\013GrpsService\022E\n\tSendEmail\022\035" +
-      ".gestordecorreos.EmailRequest\032\031.gestorde" +
-      "correos.Response\022I\n\010GetInbox\022\035.gestordec" +
-      "orreos.InboxRequest\032\036.gestordecorreos.In" +
-      "boxResponseB/\n\033com.example.gestordecorre" +
-      "osB\020GrpsServiceProtob\006proto3"
+      "ody\030\004 \001(\t\022\014\n\004read\030\005 \001(\0102\237\001\n\013GrpsService\022" +
+      "E\n\tSendEmail\022\035.gestordecorreos.EmailRequ" +
+      "est\032\031.gestordecorreos.Response\022I\n\010GetInb" +
+      "ox\022\035.gestordecorreos.InboxRequest\032\036.gest" +
+      "ordecorreos.InboxResponseB/\n\033com.example" +
+      ".gestordecorreosB\020GrpsServiceProtob\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3963,7 +4037,7 @@ public final class GrpsServiceProto {
     internal_static_gestordecorreos_Email_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_Email_descriptor,
-        new java.lang.String[] { "Sender", "Recipient", "Subject", "Body", });
+        new java.lang.String[] { "Sender", "Recipient", "Subject", "Body", "Read", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

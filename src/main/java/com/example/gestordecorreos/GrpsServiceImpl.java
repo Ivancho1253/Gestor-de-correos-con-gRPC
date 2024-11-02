@@ -10,22 +10,22 @@ public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {
 
     @Override
     public void sendEmail(GrpsServiceProto.EmailRequest request, StreamObserver<GrpsServiceProto.Response> responseObserver) {
-        // Crear y almacenar el email
         GrpsServiceProto.Email email = GrpsServiceProto.Email.newBuilder()
                 .setSender(request.getSender())
                 .setRecipient(request.getRecipient())
                 .setSubject(request.getSubject())
                 .setBody(request.getBody())
+                .setRead(false) // Marcar como no leído
                 .build();
         inbox.add(email);
 
-        // Responder que el correo fue enviado
         GrpsServiceProto.Response response = GrpsServiceProto.Response.newBuilder()
                 .setMessage(" De: " + request.getSender() + " Para: " + request.getRecipient() + " Asunto: " + request.getSubject() + " " + request.getBody())
                 .build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
+
 
     @Override
     public void getInbox(GrpsServiceProto.InboxRequest request, StreamObserver<GrpsServiceProto.InboxResponse> responseObserver) {
@@ -44,4 +44,6 @@ public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
+    
 }
+//" De: " + request.getSender() + " Para: " + request.getRecipient() + " Asunto: " + request.getSubject() + " " + request.getBody()
