@@ -30,7 +30,7 @@ public class GrpsServiceClient {
         try {
             // Llama al método sendEmail y obtiene la respuesta
             GrpsServiceProto.Response response = blockingStub.sendEmail(request);
-            System.out.println("Respuesta del servidor: " + response.getMessage());
+            System.out.println("Email enviado:\n" + response.getMessage());
         } catch (StatusRuntimeException e) {
             System.err.println("Error de RPC: " + e.getStatus());
         }
@@ -40,7 +40,9 @@ public class GrpsServiceClient {
         GrpsServiceClient client = new GrpsServiceClient("localhost", 50051);
 
         // Envía un email de prueba
-        client.sendEmail("remitente@ejemplo.com", "destinatario@ejemplo.com",
-                         "Prueba de Asunto", "Contenido del email de prueba.");
+        client.sendEmail("rodriUCP@gmail.com\n", 
+                        "AugustoUCP@gmail.com\n",
+                        "Tenemos que realizar lo de fisica\n", 
+                        "Vamos a juntarnos el 05/11 a hacer lo de fisica.\n");
     }
 }

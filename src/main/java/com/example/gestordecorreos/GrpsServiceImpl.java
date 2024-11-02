@@ -17,7 +17,7 @@ public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {
         String body = request.getBody();
 
         // Lógica de envío de correo
-        String responseMessage = "Email enviado de " + sender + " a " + recipient + " con asunto: " + subject + " y cuerpo: " + body;
+        String responseMessage = "De: " + sender + " Para: " + recipient + " Asunto: " + subject + " " + body;
 
         // Construye y envía la respuesta
         GrpsServiceProto.Response response = GrpsServiceProto.Response.newBuilder()
