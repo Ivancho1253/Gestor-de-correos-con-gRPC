@@ -10,45 +10,49 @@ import java.util.Scanner;
 
 public class GrpsServiceClient {
 
-    private final GrpsServiceGrpc.GrpsServiceBlockingStub blockingStub;
+    private final GrpsServiceGrpc.GrpsServiceBlockingStub stubBloqueante;
+    private static final String REMITENTE_PREDETERMINADO = "rodrigoUCP@gmail.com";
 
-    public GrpsServiceClient(String host, int port) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port)
+    public GrpsServiceClient(String host, int puerto) {
+        ManagedChannel canal = ManagedChannelBuilder.forAddress(host, puerto)
                 .usePlaintext()
                 .build();
-        blockingStub = GrpsServiceGrpc.newBlockingStub(channel);
+        stubBloqueante = GrpsServiceGrpc.newBlockingStub(canal);
     }
 
-    public void sendEmail(String sender, String recipient, String subject, String body) {
-        GrpsServiceProto.EmailRequest request = GrpsServiceProto.EmailRequest.newBuilder()
-                .setSender(sender)
-                .setRecipient(recipient)
-                .setSubject(subject)
-                .setBody(body)
+    public void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+        GrpsServiceProto.SolicitudCorreo solicitud = GrpsServiceProto.SolicitudCorreo.newBuilder()
+                .setRemitente(REMITENTE_PREDETERMINADO)
+                .setDestinatario(destinatario)
+                .setAsunto(asunto)
+                .setCuerpo(cuerpo)
                 .build();
 
         try {
-            GrpsServiceProto.Response response = blockingStub.sendEmail(request);
-            System.out.println("Email enviado:");
+            GrpsServiceProto.Respuesta respuesta = stubBloqueante.enviarCorreo(solicitud);
+            System.out.println("Correo enviado:");
             System.out.println(String.format("De: %s\nPara: %s\nAsunto: %s\nMensaje: %s\n",
-                    sender, recipient, subject, body));
+                    REMITENTE_PREDETERMINADO, destinatario, asunto, cuerpo));
         } catch (StatusRuntimeException e) {
             System.err.println("Error de RPC: " + e.getStatus());
         }
     }
 
-    public void viewReceivedEmails(String recipient) {
-        GrpsServiceProto.InboxRequest request = GrpsServiceProto.InboxRequest.newBuilder()
-                .setRecipient(recipient)
+    public void verCorreosRecibidos() {
+            // Configura el destinatario predeterminado del cliente
+        String destinatario = REMITENTE_PREDETERMINADO;  // tu propio correo
+
+        GrpsServiceProto.SolicitudBandeja solicitud = GrpsServiceProto.SolicitudBandeja.newBuilder()
+                .setDestinatario(destinatario)
                 .build();
 
         try {
-            GrpsServiceProto.InboxResponse response = blockingStub.getInbox(request);
-            System.out.println("Emails recibidos para " + recipient + ":");
-            for (GrpsServiceProto.Email email : response.getEmailsList()) {
-                System.out.println("De: " + email.getSender());
-                System.out.println("Asunto: " + email.getSubject());
-                System.out.println("Mensaje: " + email.getBody());
+            GrpsServiceProto.RespuestaBandeja respuesta = stubBloqueante.obtenerBandejaEntrada(solicitud);
+            System.out.println("Correos recibidos para " + destinatario + ":");
+            for (GrpsServiceProto.Correo correo : respuesta.getCorreosList()) {
+                System.out.println("De: " + correo.getRemitente());
+                System.out.println("Asunto: " + correo.getAsunto());
+                System.out.println("Mensaje: " + correo.getCuerpo());
                 System.out.println("----------------------------");
             }
         } catch (StatusRuntimeException e) {
@@ -56,18 +60,18 @@ public class GrpsServiceClient {
         }
     }
 
-    public void viewSentEmails(String sender) {
-        GrpsServiceProto.SentRequest request = GrpsServiceProto.SentRequest.newBuilder()
-                .setSender(sender)
+    public void verCorreosEnviados() {
+        GrpsServiceProto.SolicitudEnviados solicitud = GrpsServiceProto.SolicitudEnviados.newBuilder()
+                .setRemitente(REMITENTE_PREDETERMINADO)
                 .build();
 
         try {
-            GrpsServiceProto.SentResponse response = blockingStub.getSentEmails(request);
-            System.out.println("Emails enviados por " + sender + ":");
-            for (GrpsServiceProto.Email email : response.getEmailsList()) {
-                System.out.println("Para: " + email.getRecipient());
-                System.out.println("Asunto: " + email.getSubject());
-                System.out.println("Mensaje: " + email.getBody());
+            GrpsServiceProto.RespuestaEnviados respuesta = stubBloqueante.obtenerCorreosEnviados(solicitud);
+            System.out.println("Correos enviados por " + REMITENTE_PREDETERMINADO + ":");
+            for (GrpsServiceProto.Correo correo : respuesta.getCorreosList()) {
+                System.out.println("Para: " + correo.getDestinatario());
+                System.out.println("Asunto: " + correo.getAsunto());
+                System.out.println("Mensaje: " + correo.getCuerpo());
                 System.out.println("----------------------------");
             }
         } catch (StatusRuntimeException e) {
@@ -76,45 +80,39 @@ public class GrpsServiceClient {
     }
 
     public static void main(String[] args) {
-        GrpsServiceClient client = new GrpsServiceClient("localhost", 50051);
+        GrpsServiceClient cliente = new GrpsServiceClient("localhost", 50051);
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("Opciones:");
-            System.out.println("1. Enviar un email");
-            System.out.println("2. Ver emails recibidos");
-            System.out.println("3. Ver emails enviados");
-            System.out.print("Seleccione una opción: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
+            System.out.println("1. Enviar un correo");
+            System.out.println("2. Ver correos recibidos");
+            System.out.println("3. Ver correos enviados");
+            System.out.print("Seleccione una opcion: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();  // Consumir salto de línea
 
-            switch (choice) {
+            switch (opcion) {
                 case 1:
-                    System.out.print("De: ");
-                    String sender = scanner.nextLine();
                     System.out.print("Para: ");
-                    String recipient = scanner.nextLine();
+                    String destinatario = scanner.nextLine();
                     System.out.print("Asunto: ");
-                    String subject = scanner.nextLine();
+                    String asunto = scanner.nextLine();
                     System.out.print("Mensaje: ");
-                    String body = scanner.nextLine();
-                    client.sendEmail(sender, recipient, subject, body);
+                    String cuerpo = scanner.nextLine();
+                    cliente.enviarCorreo(destinatario, asunto, cuerpo);
                     break;
 
                 case 2:
-                    System.out.print("Ingrese su email para ver la bandeja de entrada: ");
-                    String recipientEmail = scanner.nextLine();
-                    client.viewReceivedEmails(recipientEmail);
+                    cliente.verCorreosRecibidos();
                     break;
 
                 case 3:
-                    System.out.print("Ingrese su email para ver los emails enviados: ");
-                    String senderEmail = scanner.nextLine();
-                    client.viewSentEmails(senderEmail);
+                    cliente.verCorreosEnviados();
                     break;
 
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("Opcion no valida.");
             }
         }
     }

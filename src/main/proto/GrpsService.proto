@@ -7,49 +7,49 @@ package gestordecorreos;
 
 // Definición del servicio GrpsService
 service GrpsService {
-  rpc SendEmail (EmailRequest) returns (Response);            // Enviar un correo
-  rpc GetInbox (InboxRequest) returns (InboxResponse);        // Obtener la bandeja de entrada
-  rpc GetSentEmails (SentRequest) returns (SentResponse);     // Obtener los correos enviados
+  rpc EnviarCorreo (SolicitudCorreo) returns (Respuesta);           // Enviar un correo
+  rpc ObtenerBandejaEntrada (SolicitudBandeja) returns (RespuestaBandeja); // Obtener la bandeja de entrada
+  rpc ObtenerCorreosEnviados (SolicitudEnviados) returns (RespuestaEnviados); // Obtener los correos enviados
 }
 
 // Mensaje de solicitud para enviar un correo
-message EmailRequest {
-  string sender = 1;
-  string recipient = 2;
-  string subject = 3;
-  string body = 4;
+message SolicitudCorreo {
+  string remitente = 1;      // Remitente del correo
+  string destinatario = 2;   // Destinatario del correo
+  string asunto = 3;         // Asunto del correo
+  string cuerpo = 4;         // Contenido del correo
 }
 
-// Mensaje de respuesta para SendEmail
-message Response {
-  string message = 1;
+// Mensaje de respuesta para EnviarCorreo
+message Respuesta {
+  string mensaje = 1; // Mensaje de confirmación o error
 }
 
-// Mensaje de solicitud para GetInbox
-message InboxRequest {
-  string recipient = 1; // Usuario que consulta su bandeja
+// Mensaje de solicitud para ObtenerBandejaEntrada
+message SolicitudBandeja {
+  string destinatario = 1; // Usuario que consulta su bandeja
 }
 
-// Mensaje de respuesta para GetInbox
-message InboxResponse {
-  repeated Email emails = 1; // Lista de correos en la bandeja de entrada
+// Mensaje de respuesta para ObtenerBandejaEntrada
+message RespuestaBandeja {
+  repeated Correo correos = 1; // Lista de correos en la bandeja de entrada
 }
 
-// Mensaje de solicitud para GetSentEmails
-message SentRequest {
-  string sender = 1; // Usuario que consulta sus correos enviados
+// Mensaje de solicitud para ObtenerCorreosEnviados
+message SolicitudEnviados {
+  string remitente = 1; // Usuario que consulta sus correos enviados
 }
 
-// Mensaje de respuesta para GetSentEmails
-message SentResponse {
-  repeated Email emails = 1; // Lista de correos enviados
+// Mensaje de respuesta para ObtenerCorreosEnviados
+message RespuestaEnviados {
+  repeated Correo correos = 1; // Lista de correos enviados
 }
 
 // Mensaje de correo
-message Email {
-  string sender = 1;
-  string recipient = 2;
-  string subject = 3;
-  string body = 4;
-  bool read = 5;
+message Correo {
+  string remitente = 1;
+  string destinatario = 2;
+  string asunto = 3;
+  string cuerpo = 4;
+  bool leido = 5; // Indica si el correo ha sido leído
 }
