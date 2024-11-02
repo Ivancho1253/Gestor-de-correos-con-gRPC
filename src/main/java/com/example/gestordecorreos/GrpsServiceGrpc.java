@@ -49,35 +49,35 @@ public final class GrpsServiceGrpc {
     return getSendEmailMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.GroupRequest,
-      com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGetGroupInfoMethod;
+  private static volatile io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.InboxRequest,
+      com.example.gestordecorreos.GrpsServiceProto.InboxResponse> getGetInboxMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetGroupInfo",
-      requestType = com.example.gestordecorreos.GrpsServiceProto.GroupRequest.class,
-      responseType = com.example.gestordecorreos.GrpsServiceProto.GroupResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetInbox",
+      requestType = com.example.gestordecorreos.GrpsServiceProto.InboxRequest.class,
+      responseType = com.example.gestordecorreos.GrpsServiceProto.InboxResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.GroupRequest,
-      com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGetGroupInfoMethod() {
-    io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.GroupRequest, com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGetGroupInfoMethod;
-    if ((getGetGroupInfoMethod = GrpsServiceGrpc.getGetGroupInfoMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.InboxRequest,
+      com.example.gestordecorreos.GrpsServiceProto.InboxResponse> getGetInboxMethod() {
+    io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.InboxRequest, com.example.gestordecorreos.GrpsServiceProto.InboxResponse> getGetInboxMethod;
+    if ((getGetInboxMethod = GrpsServiceGrpc.getGetInboxMethod) == null) {
       synchronized (GrpsServiceGrpc.class) {
-        if ((getGetGroupInfoMethod = GrpsServiceGrpc.getGetGroupInfoMethod) == null) {
-          GrpsServiceGrpc.getGetGroupInfoMethod = getGetGroupInfoMethod =
-              io.grpc.MethodDescriptor.<com.example.gestordecorreos.GrpsServiceProto.GroupRequest, com.example.gestordecorreos.GrpsServiceProto.GroupResponse>newBuilder()
+        if ((getGetInboxMethod = GrpsServiceGrpc.getGetInboxMethod) == null) {
+          GrpsServiceGrpc.getGetInboxMethod = getGetInboxMethod =
+              io.grpc.MethodDescriptor.<com.example.gestordecorreos.GrpsServiceProto.InboxRequest, com.example.gestordecorreos.GrpsServiceProto.InboxResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetGroupInfo"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetInbox"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gestordecorreos.GrpsServiceProto.GroupRequest.getDefaultInstance()))
+                  com.example.gestordecorreos.GrpsServiceProto.InboxRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gestordecorreos.GrpsServiceProto.GroupResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new GrpsServiceMethodDescriptorSupplier("GetGroupInfo"))
+                  com.example.gestordecorreos.GrpsServiceProto.InboxResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GrpsServiceMethodDescriptorSupplier("GetInbox"))
               .build();
         }
       }
     }
-    return getGetGroupInfoMethod;
+    return getGetInboxMethod;
   }
 
   /**
@@ -139,10 +139,13 @@ public final class GrpsServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Método para obtener la bandeja de entrada
+     * </pre>
      */
-    default void getGroupInfo(com.example.gestordecorreos.GrpsServiceProto.GroupRequest request,
-        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.GroupResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetGroupInfoMethod(), responseObserver);
+    default void getInbox(com.example.gestordecorreos.GrpsServiceProto.InboxRequest request,
+        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.InboxResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetInboxMethod(), responseObserver);
     }
   }
 
@@ -188,11 +191,14 @@ public final class GrpsServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Método para obtener la bandeja de entrada
+     * </pre>
      */
-    public void getGroupInfo(com.example.gestordecorreos.GrpsServiceProto.GroupRequest request,
-        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.GroupResponse> responseObserver) {
+    public void getInbox(com.example.gestordecorreos.GrpsServiceProto.InboxRequest request,
+        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.InboxResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetGroupInfoMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetInboxMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -223,10 +229,13 @@ public final class GrpsServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Método para obtener la bandeja de entrada
+     * </pre>
      */
-    public com.example.gestordecorreos.GrpsServiceProto.GroupResponse getGroupInfo(com.example.gestordecorreos.GrpsServiceProto.GroupRequest request) {
+    public com.example.gestordecorreos.GrpsServiceProto.InboxResponse getInbox(com.example.gestordecorreos.GrpsServiceProto.InboxRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetGroupInfoMethod(), getCallOptions(), request);
+          getChannel(), getGetInboxMethod(), getCallOptions(), request);
     }
   }
 
@@ -258,16 +267,19 @@ public final class GrpsServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Método para obtener la bandeja de entrada
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.example.gestordecorreos.GrpsServiceProto.GroupResponse> getGroupInfo(
-        com.example.gestordecorreos.GrpsServiceProto.GroupRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gestordecorreos.GrpsServiceProto.InboxResponse> getInbox(
+        com.example.gestordecorreos.GrpsServiceProto.InboxRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetGroupInfoMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetInboxMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_SEND_EMAIL = 0;
-  private static final int METHODID_GET_GROUP_INFO = 1;
+  private static final int METHODID_GET_INBOX = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -290,9 +302,9 @@ public final class GrpsServiceGrpc {
           serviceImpl.sendEmail((com.example.gestordecorreos.GrpsServiceProto.EmailRequest) request,
               (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Response>) responseObserver);
           break;
-        case METHODID_GET_GROUP_INFO:
-          serviceImpl.getGroupInfo((com.example.gestordecorreos.GrpsServiceProto.GroupRequest) request,
-              (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.GroupResponse>) responseObserver);
+        case METHODID_GET_INBOX:
+          serviceImpl.getInbox((com.example.gestordecorreos.GrpsServiceProto.InboxRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.InboxResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -320,12 +332,12 @@ public final class GrpsServiceGrpc {
               com.example.gestordecorreos.GrpsServiceProto.Response>(
                 service, METHODID_SEND_EMAIL)))
         .addMethod(
-          getGetGroupInfoMethod(),
+          getGetInboxMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.example.gestordecorreos.GrpsServiceProto.GroupRequest,
-              com.example.gestordecorreos.GrpsServiceProto.GroupResponse>(
-                service, METHODID_GET_GROUP_INFO)))
+              com.example.gestordecorreos.GrpsServiceProto.InboxRequest,
+              com.example.gestordecorreos.GrpsServiceProto.InboxResponse>(
+                service, METHODID_GET_INBOX)))
         .build();
   }
 
@@ -375,7 +387,7 @@ public final class GrpsServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new GrpsServiceFileDescriptorSupplier())
               .addMethod(getSendEmailMethod())
-              .addMethod(getGetGroupInfoMethod())
+              .addMethod(getGetInboxMethod())
               .build();
         }
       }

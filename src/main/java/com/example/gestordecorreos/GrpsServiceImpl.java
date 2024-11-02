@@ -1,29 +1,46 @@
 package com.example.gestordecorreos;
-
-import com.example.gestordecorreos.GrpsServiceGrpc;
-import com.example.gestordecorreos.GrpsServiceProto;
+import java.util.ArrayList;
+import java.util.List;
+import com.example.gestordecorreos.GrpsServiceProto; // Asegúrate de que esta ruta sea correcta
 import io.grpc.stub.StreamObserver;
-
 
 public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {
 
+    private final List<GrpsServiceProto.Email> inbox = new ArrayList<>();
+
     @Override
-    public void sendEmail(GrpsServiceProto.EmailRequest request,
-                          StreamObserver<GrpsServiceProto.Response> responseObserver) {
-        // Recupera los datos de la solicitud
-        String sender = request.getSender();
-        String recipient = request.getRecipient();
-        String subject = request.getSubject();
-        String body = request.getBody();
-
-        // Lógica de envío de correo
-        String responseMessage = "De: " + sender + " Para: " + recipient + " Asunto: " + subject + " " + body;
-
-        // Construye y envía la respuesta
-        GrpsServiceProto.Response response = GrpsServiceProto.Response.newBuilder()
-                .setMessage(responseMessage)
+    public void sendEmail(GrpsServiceProto.EmailRequest request, StreamObserver<GrpsServiceProto.Response> responseObserver) {
+        // Crear y almacenar el email
+        GrpsServiceProto.Email email = GrpsServiceProto.Email.newBuilder()
+                .setSender(request.getSender())
+                .setRecipient(request.getRecipient())
+                .setSubject(request.getSubject())
+                .setBody(request.getBody())
                 .build();
+        inbox.add(email);
 
+        // Responder que el correo fue enviado
+        GrpsServiceProto.Response response = GrpsServiceProto.Response.newBuilder()
+                .setMessage(" De: " + request.getSender() + " Para: " + request.getRecipient() + " Asunto: " + request.getSubject() + " " + request.getBody())
+                .build();
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getInbox(GrpsServiceProto.InboxRequest request, StreamObserver<GrpsServiceProto.InboxResponse> responseObserver) {
+        // Filtrar correos para el destinatario especificado
+        List<GrpsServiceProto.Email> userInbox = new ArrayList<>();
+        for (GrpsServiceProto.Email email : inbox) {
+            if (email.getRecipient().equals(request.getRecipient())) {
+                userInbox.add(email);
+            }
+        }
+
+        // Construir y enviar la respuesta
+        GrpsServiceProto.InboxResponse response = GrpsServiceProto.InboxResponse.newBuilder()
+                .addAllEmails(userInbox)
+                .build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
