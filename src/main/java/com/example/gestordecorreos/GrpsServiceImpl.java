@@ -2,7 +2,6 @@ package com.example.gestordecorreos;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.gestordecorreos.GrpsServiceProto;
 import io.grpc.stub.StreamObserver;
 
 public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {

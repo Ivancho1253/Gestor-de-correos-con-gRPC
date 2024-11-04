@@ -111,6 +111,37 @@ public final class GrpsServiceGrpc {
     return getObtenerCorreosEnviadosMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido,
+      com.example.gestordecorreos.GrpsServiceProto.Respuesta> getMarcarCorreoComoLeidoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "MarcarCorreoComoLeido",
+      requestType = com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.class,
+      responseType = com.example.gestordecorreos.GrpsServiceProto.Respuesta.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido,
+      com.example.gestordecorreos.GrpsServiceProto.Respuesta> getMarcarCorreoComoLeidoMethod() {
+    io.grpc.MethodDescriptor<com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido, com.example.gestordecorreos.GrpsServiceProto.Respuesta> getMarcarCorreoComoLeidoMethod;
+    if ((getMarcarCorreoComoLeidoMethod = GrpsServiceGrpc.getMarcarCorreoComoLeidoMethod) == null) {
+      synchronized (GrpsServiceGrpc.class) {
+        if ((getMarcarCorreoComoLeidoMethod = GrpsServiceGrpc.getMarcarCorreoComoLeidoMethod) == null) {
+          GrpsServiceGrpc.getMarcarCorreoComoLeidoMethod = getMarcarCorreoComoLeidoMethod =
+              io.grpc.MethodDescriptor.<com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido, com.example.gestordecorreos.GrpsServiceProto.Respuesta>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "MarcarCorreoComoLeido"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gestordecorreos.GrpsServiceProto.Respuesta.getDefaultInstance()))
+              .setSchemaDescriptor(new GrpsServiceMethodDescriptorSupplier("MarcarCorreoComoLeido"))
+              .build();
+        }
+      }
+    }
+    return getMarcarCorreoComoLeidoMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -191,6 +222,16 @@ public final class GrpsServiceGrpc {
         io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.RespuestaEnviados> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getObtenerCorreosEnviadosMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Marcar un correo como leído
+     * </pre>
+     */
+    default void marcarCorreoComoLeido(com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido request,
+        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Respuesta> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMarcarCorreoComoLeidoMethod(), responseObserver);
+    }
   }
 
   /**
@@ -258,6 +299,17 @@ public final class GrpsServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getObtenerCorreosEnviadosMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Marcar un correo como leído
+     * </pre>
+     */
+    public void marcarCorreoComoLeido(com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido request,
+        io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Respuesta> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getMarcarCorreoComoLeidoMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -307,6 +359,16 @@ public final class GrpsServiceGrpc {
     public com.example.gestordecorreos.GrpsServiceProto.RespuestaEnviados obtenerCorreosEnviados(com.example.gestordecorreos.GrpsServiceProto.SolicitudEnviados request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getObtenerCorreosEnviadosMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Marcar un correo como leído
+     * </pre>
+     */
+    public com.example.gestordecorreos.GrpsServiceProto.Respuesta marcarCorreoComoLeido(com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getMarcarCorreoComoLeidoMethod(), getCallOptions(), request);
     }
   }
 
@@ -361,11 +423,23 @@ public final class GrpsServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getObtenerCorreosEnviadosMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Marcar un correo como leído
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gestordecorreos.GrpsServiceProto.Respuesta> marcarCorreoComoLeido(
+        com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getMarcarCorreoComoLeidoMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ENVIAR_CORREO = 0;
   private static final int METHODID_OBTENER_BANDEJA_ENTRADA = 1;
   private static final int METHODID_OBTENER_CORREOS_ENVIADOS = 2;
+  private static final int METHODID_MARCAR_CORREO_COMO_LEIDO = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -395,6 +469,10 @@ public final class GrpsServiceGrpc {
         case METHODID_OBTENER_CORREOS_ENVIADOS:
           serviceImpl.obtenerCorreosEnviados((com.example.gestordecorreos.GrpsServiceProto.SolicitudEnviados) request,
               (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.RespuestaEnviados>) responseObserver);
+          break;
+        case METHODID_MARCAR_CORREO_COMO_LEIDO:
+          serviceImpl.marcarCorreoComoLeido((com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido) request,
+              (io.grpc.stub.StreamObserver<com.example.gestordecorreos.GrpsServiceProto.Respuesta>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -435,6 +513,13 @@ public final class GrpsServiceGrpc {
               com.example.gestordecorreos.GrpsServiceProto.SolicitudEnviados,
               com.example.gestordecorreos.GrpsServiceProto.RespuestaEnviados>(
                 service, METHODID_OBTENER_CORREOS_ENVIADOS)))
+        .addMethod(
+          getMarcarCorreoComoLeidoMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido,
+              com.example.gestordecorreos.GrpsServiceProto.Respuesta>(
+                service, METHODID_MARCAR_CORREO_COMO_LEIDO)))
         .build();
   }
 
@@ -486,6 +571,7 @@ public final class GrpsServiceGrpc {
               .addMethod(getEnviarCorreoMethod())
               .addMethod(getObtenerBandejaEntradaMethod())
               .addMethod(getObtenerCorreosEnviadosMethod())
+              .addMethod(getMarcarCorreoComoLeidoMethod())
               .build();
         }
       }

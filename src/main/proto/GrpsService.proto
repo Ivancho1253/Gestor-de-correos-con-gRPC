@@ -10,6 +10,8 @@ service GrpsService {
   rpc EnviarCorreo (SolicitudCorreo) returns (Respuesta);           // Enviar un correo
   rpc ObtenerBandejaEntrada (SolicitudBandeja) returns (RespuestaBandeja); // Obtener la bandeja de entrada
   rpc ObtenerCorreosEnviados (SolicitudEnviados) returns (RespuestaEnviados); // Obtener los correos enviados
+  rpc MarcarCorreoComoLeido (SolicitudMarcarLeido) returns (Respuesta); // Marcar un correo como leído
+
 }
 
 // Mensaje de solicitud para enviar un correo
@@ -43,6 +45,12 @@ message SolicitudEnviados {
 // Mensaje de respuesta para ObtenerCorreosEnviados
 message RespuestaEnviados {
   repeated Correo correos = 1; // Lista de correos enviados
+}
+
+// Mensaje de solicitud para marcar un correo como leído
+message SolicitudMarcarLeido {
+  string destinatario = 1; // Destinatario que marca el correo
+  int32 correo_id = 2;    // Identificador único del correo
 }
 
 // Mensaje de correo

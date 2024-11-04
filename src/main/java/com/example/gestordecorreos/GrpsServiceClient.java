@@ -1,7 +1,5 @@
 package com.example.gestordecorreos;
 
-import com.example.gestordecorreos.GrpsServiceGrpc;
-import com.example.gestordecorreos.GrpsServiceProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
@@ -27,15 +25,8 @@ public class GrpsServiceClient {
                 .setAsunto(asunto)
                 .setCuerpo(cuerpo)
                 .build();
+        GrpsServiceProto.Respuesta respuesta = stubBloqueante.enviarCorreo(solicitud);
 
-        try {
-            GrpsServiceProto.Respuesta respuesta = stubBloqueante.enviarCorreo(solicitud);
-            System.out.println("Correo enviado:");
-            System.out.println(String.format("De: %s\nPara: %s\nAsunto: %s\nMensaje: %s\n",
-                    REMITENTE_PREDETERMINADO, destinatario, asunto, cuerpo));
-        } catch (StatusRuntimeException e) {
-            System.err.println("Error de RPC: " + e.getStatus());
-        }
     }
 
     public void verCorreosRecibidos() {
@@ -90,8 +81,7 @@ public class GrpsServiceClient {
             System.out.println("3. Ver correos enviados");
             System.out.print("Seleccione una opcion: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine();  // Consumir salto de línea
-
+            scanner.nextLine();  
             switch (opcion) {
                 case 1:
                     System.out.print("Para: ");
@@ -101,6 +91,7 @@ public class GrpsServiceClient {
                     System.out.print("Mensaje: ");
                     String cuerpo = scanner.nextLine();
                     cliente.enviarCorreo(destinatario, asunto, cuerpo);
+                    System.out.println("Correo enviado.");
                     break;
 
                 case 2:

@@ -4513,6 +4513,652 @@ public final class GrpsServiceProto {
 
   }
 
+  public interface SolicitudMarcarLeidoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:gestordecorreos.SolicitudMarcarLeido)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Destinatario que marca el correo
+     * </pre>
+     *
+     * <code>string destinatario = 1;</code>
+     * @return The destinatario.
+     */
+    java.lang.String getDestinatario();
+    /**
+     * <pre>
+     * Destinatario que marca el correo
+     * </pre>
+     *
+     * <code>string destinatario = 1;</code>
+     * @return The bytes for destinatario.
+     */
+    com.google.protobuf.ByteString
+        getDestinatarioBytes();
+
+    /**
+     * <pre>
+     * Identificador único del correo
+     * </pre>
+     *
+     * <code>int32 correo_id = 2;</code>
+     * @return The correoId.
+     */
+    int getCorreoId();
+  }
+  /**
+   * <pre>
+   * Mensaje de solicitud para marcar un correo como leído
+   * </pre>
+   *
+   * Protobuf type {@code gestordecorreos.SolicitudMarcarLeido}
+   */
+  public static final class SolicitudMarcarLeido extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:gestordecorreos.SolicitudMarcarLeido)
+      SolicitudMarcarLeidoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 28,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        SolicitudMarcarLeido.class.getName());
+    }
+    // Use SolicitudMarcarLeido.newBuilder() to construct.
+    private SolicitudMarcarLeido(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SolicitudMarcarLeido() {
+      destinatario_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SolicitudMarcarLeido_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SolicitudMarcarLeido_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.class, com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.Builder.class);
+    }
+
+    public static final int DESTINATARIO_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object destinatario_ = "";
+    /**
+     * <pre>
+     * Destinatario que marca el correo
+     * </pre>
+     *
+     * <code>string destinatario = 1;</code>
+     * @return The destinatario.
+     */
+    @java.lang.Override
+    public java.lang.String getDestinatario() {
+      java.lang.Object ref = destinatario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        destinatario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Destinatario que marca el correo
+     * </pre>
+     *
+     * <code>string destinatario = 1;</code>
+     * @return The bytes for destinatario.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDestinatarioBytes() {
+      java.lang.Object ref = destinatario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        destinatario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CORREO_ID_FIELD_NUMBER = 2;
+    private int correoId_ = 0;
+    /**
+     * <pre>
+     * Identificador único del correo
+     * </pre>
+     *
+     * <code>int32 correo_id = 2;</code>
+     * @return The correoId.
+     */
+    @java.lang.Override
+    public int getCorreoId() {
+      return correoId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(destinatario_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, destinatario_);
+      }
+      if (correoId_ != 0) {
+        output.writeInt32(2, correoId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(destinatario_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, destinatario_);
+      }
+      if (correoId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, correoId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido)) {
+        return super.equals(obj);
+      }
+      com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido other = (com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido) obj;
+
+      if (!getDestinatario()
+          .equals(other.getDestinatario())) return false;
+      if (getCorreoId()
+          != other.getCorreoId()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DESTINATARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getDestinatario().hashCode();
+      hash = (37 * hash) + CORREO_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getCorreoId();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Mensaje de solicitud para marcar un correo como leído
+     * </pre>
+     *
+     * Protobuf type {@code gestordecorreos.SolicitudMarcarLeido}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:gestordecorreos.SolicitudMarcarLeido)
+        com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeidoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SolicitudMarcarLeido_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SolicitudMarcarLeido_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.class, com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.Builder.class);
+      }
+
+      // Construct using com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        destinatario_ = "";
+        correoId_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.gestordecorreos.GrpsServiceProto.internal_static_gestordecorreos_SolicitudMarcarLeido_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido getDefaultInstanceForType() {
+        return com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido build() {
+        com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido buildPartial() {
+        com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido result = new com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.destinatario_ = destinatario_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.correoId_ = correoId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido) {
+          return mergeFrom((com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido other) {
+        if (other == com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido.getDefaultInstance()) return this;
+        if (!other.getDestinatario().isEmpty()) {
+          destinatario_ = other.destinatario_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getCorreoId() != 0) {
+          setCorreoId(other.getCorreoId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                destinatario_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                correoId_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object destinatario_ = "";
+      /**
+       * <pre>
+       * Destinatario que marca el correo
+       * </pre>
+       *
+       * <code>string destinatario = 1;</code>
+       * @return The destinatario.
+       */
+      public java.lang.String getDestinatario() {
+        java.lang.Object ref = destinatario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          destinatario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Destinatario que marca el correo
+       * </pre>
+       *
+       * <code>string destinatario = 1;</code>
+       * @return The bytes for destinatario.
+       */
+      public com.google.protobuf.ByteString
+          getDestinatarioBytes() {
+        java.lang.Object ref = destinatario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          destinatario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Destinatario que marca el correo
+       * </pre>
+       *
+       * <code>string destinatario = 1;</code>
+       * @param value The destinatario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestinatario(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        destinatario_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Destinatario que marca el correo
+       * </pre>
+       *
+       * <code>string destinatario = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDestinatario() {
+        destinatario_ = getDefaultInstance().getDestinatario();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Destinatario que marca el correo
+       * </pre>
+       *
+       * <code>string destinatario = 1;</code>
+       * @param value The bytes for destinatario to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestinatarioBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        destinatario_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int correoId_ ;
+      /**
+       * <pre>
+       * Identificador único del correo
+       * </pre>
+       *
+       * <code>int32 correo_id = 2;</code>
+       * @return The correoId.
+       */
+      @java.lang.Override
+      public int getCorreoId() {
+        return correoId_;
+      }
+      /**
+       * <pre>
+       * Identificador único del correo
+       * </pre>
+       *
+       * <code>int32 correo_id = 2;</code>
+       * @param value The correoId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCorreoId(int value) {
+
+        correoId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Identificador único del correo
+       * </pre>
+       *
+       * <code>int32 correo_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCorreoId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        correoId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:gestordecorreos.SolicitudMarcarLeido)
+    }
+
+    // @@protoc_insertion_point(class_scope:gestordecorreos.SolicitudMarcarLeido)
+    private static final com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido();
+    }
+
+    public static com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SolicitudMarcarLeido>
+        PARSER = new com.google.protobuf.AbstractParser<SolicitudMarcarLeido>() {
+      @java.lang.Override
+      public SolicitudMarcarLeido parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SolicitudMarcarLeido> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SolicitudMarcarLeido> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.gestordecorreos.GrpsServiceProto.SolicitudMarcarLeido getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface CorreoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:gestordecorreos.Correo)
       com.google.protobuf.MessageOrBuilder {
@@ -5599,6 +6245,11 @@ public final class GrpsServiceProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_gestordecorreos_RespuestaEnviados_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gestordecorreos_SolicitudMarcarLeido_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_gestordecorreos_SolicitudMarcarLeido_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_gestordecorreos_Correo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5621,18 +6272,22 @@ public final class GrpsServiceProto {
       "orreos\030\001 \003(\0132\027.gestordecorreos.Correo\"&\n" +
       "\021SolicitudEnviados\022\021\n\tremitente\030\001 \001(\t\"=\n" +
       "\021RespuestaEnviados\022(\n\007correos\030\001 \003(\0132\027.ge" +
-      "stordecorreos.Correo\"`\n\006Correo\022\021\n\tremite" +
-      "nte\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asunt" +
-      "o\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\022\r\n\005leido\030\005 \001(\0102\234" +
-      "\002\n\013GrpsService\022L\n\014EnviarCorreo\022 .gestord" +
-      "ecorreos.SolicitudCorreo\032\032.gestordecorre" +
-      "os.Respuesta\022]\n\025ObtenerBandejaEntrada\022!." +
-      "gestordecorreos.SolicitudBandeja\032!.gesto" +
-      "rdecorreos.RespuestaBandeja\022`\n\026ObtenerCo" +
-      "rreosEnviados\022\".gestordecorreos.Solicitu" +
-      "dEnviados\032\".gestordecorreos.RespuestaEnv" +
-      "iadosB/\n\033com.example.gestordecorreosB\020Gr" +
-      "psServiceProtob\006proto3"
+      "stordecorreos.Correo\"?\n\024SolicitudMarcarL" +
+      "eido\022\024\n\014destinatario\030\001 \001(\t\022\021\n\tcorreo_id\030" +
+      "\002 \001(\005\"`\n\006Correo\022\021\n\tremitente\030\001 \001(\t\022\024\n\014de" +
+      "stinatario\030\002 \001(\t\022\016\n\006asunto\030\003 \001(\t\022\016\n\006cuer" +
+      "po\030\004 \001(\t\022\r\n\005leido\030\005 \001(\0102\370\002\n\013GrpsService\022" +
+      "L\n\014EnviarCorreo\022 .gestordecorreos.Solici" +
+      "tudCorreo\032\032.gestordecorreos.Respuesta\022]\n" +
+      "\025ObtenerBandejaEntrada\022!.gestordecorreos" +
+      ".SolicitudBandeja\032!.gestordecorreos.Resp" +
+      "uestaBandeja\022`\n\026ObtenerCorreosEnviados\022\"" +
+      ".gestordecorreos.SolicitudEnviados\032\".ges" +
+      "tordecorreos.RespuestaEnviados\022Z\n\025Marcar" +
+      "CorreoComoLeido\022%.gestordecorreos.Solici" +
+      "tudMarcarLeido\032\032.gestordecorreos.Respues" +
+      "taB/\n\033com.example.gestordecorreosB\020GrpsS" +
+      "erviceProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5674,8 +6329,14 @@ public final class GrpsServiceProto {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_RespuestaEnviados_descriptor,
         new java.lang.String[] { "Correos", });
-    internal_static_gestordecorreos_Correo_descriptor =
+    internal_static_gestordecorreos_SolicitudMarcarLeido_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_gestordecorreos_SolicitudMarcarLeido_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_gestordecorreos_SolicitudMarcarLeido_descriptor,
+        new java.lang.String[] { "Destinatario", "CorreoId", });
+    internal_static_gestordecorreos_Correo_descriptor =
+      getDescriptor().getMessageTypes().get(7);
     internal_static_gestordecorreos_Correo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_Correo_descriptor,
