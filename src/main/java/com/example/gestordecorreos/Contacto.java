@@ -1,5 +1,6 @@
 package com.example.gestordecorreos;
-    import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
 
     public class Contacto 
             implements IFavoritos{
@@ -16,21 +17,29 @@ package com.example.gestordecorreos;
             this.bandeja = new Bandeja();
         }
 
-        public String getCorreo() {
-            return correo;
+    // Constructor adicional solo con correo
+    public Contacto(String correo) {
+        setCorreo(correo);
+        this.bandeja = new Bandeja();
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    private void setCorreo(String correo) {
+        if (validarCorreo(correo)) {
+            this.correo = correo;
+        } else {
+            throw new IllegalArgumentException("Correo no válido");
         }
+    }
 
-        private  void setCorreo(String correo) {
+    // Método para obtener la bandeja
+    public Bandeja getBandeja() {
+        return bandeja;
+    }
 
-            if (validarCorreo(correo)) {
-                this.correo = correo;
-
-            } else {
-
-                throw new IllegalArgumentException("Correo no válido");
-                
-            }
-        }
 
         public String getNombre() {
             return nombre;

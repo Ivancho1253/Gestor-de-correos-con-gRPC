@@ -77,8 +77,8 @@ public class Cliente2 {
     }
 
     public static void main(String[] args) {
-        Cliente3 clienteTercero = new Cliente3("localhost", 50051);
-        clienteTercero.consultarBandejaEntrada("AugustoUCP@gmail.com");
+        Cliente2 clienteSegundo = new Cliente2("localhost", 50051);
+        clienteSegundo.consultarBandejaEntrada("AugustoUCP@gmail.com");
     }
     
 }

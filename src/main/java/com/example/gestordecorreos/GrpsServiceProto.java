@@ -1137,10 +1137,20 @@ public final class GrpsServiceProto {
 
     /**
      * <pre>
+     * Indica si la operación fue exitosa
+     * </pre>
+     *
+     * <code>bool exito = 1;</code>
+     * @return The exito.
+     */
+    boolean getExito();
+
+    /**
+     * <pre>
      * Mensaje de confirmación o error
      * </pre>
      *
-     * <code>string mensaje = 1;</code>
+     * <code>string mensaje = 2;</code>
      * @return The mensaje.
      */
     java.lang.String getMensaje();
@@ -1149,7 +1159,7 @@ public final class GrpsServiceProto {
      * Mensaje de confirmación o error
      * </pre>
      *
-     * <code>string mensaje = 1;</code>
+     * <code>string mensaje = 2;</code>
      * @return The bytes for mensaje.
      */
     com.google.protobuf.ByteString
@@ -1197,7 +1207,22 @@ public final class GrpsServiceProto {
               com.example.gestordecorreos.GrpsServiceProto.Respuesta.class, com.example.gestordecorreos.GrpsServiceProto.Respuesta.Builder.class);
     }
 
-    public static final int MENSAJE_FIELD_NUMBER = 1;
+    public static final int EXITO_FIELD_NUMBER = 1;
+    private boolean exito_ = false;
+    /**
+     * <pre>
+     * Indica si la operación fue exitosa
+     * </pre>
+     *
+     * <code>bool exito = 1;</code>
+     * @return The exito.
+     */
+    @java.lang.Override
+    public boolean getExito() {
+      return exito_;
+    }
+
+    public static final int MENSAJE_FIELD_NUMBER = 2;
     @SuppressWarnings("serial")
     private volatile java.lang.Object mensaje_ = "";
     /**
@@ -1205,7 +1230,7 @@ public final class GrpsServiceProto {
      * Mensaje de confirmación o error
      * </pre>
      *
-     * <code>string mensaje = 1;</code>
+     * <code>string mensaje = 2;</code>
      * @return The mensaje.
      */
     @java.lang.Override
@@ -1226,7 +1251,7 @@ public final class GrpsServiceProto {
      * Mensaje de confirmación o error
      * </pre>
      *
-     * <code>string mensaje = 1;</code>
+     * <code>string mensaje = 2;</code>
      * @return The bytes for mensaje.
      */
     @java.lang.Override
@@ -1258,8 +1283,11 @@ public final class GrpsServiceProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (exito_ != false) {
+        output.writeBool(1, exito_);
+      }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensaje_)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, mensaje_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, mensaje_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1270,8 +1298,12 @@ public final class GrpsServiceProto {
       if (size != -1) return size;
 
       size = 0;
+      if (exito_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, exito_);
+      }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(mensaje_)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, mensaje_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, mensaje_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1288,6 +1320,8 @@ public final class GrpsServiceProto {
       }
       com.example.gestordecorreos.GrpsServiceProto.Respuesta other = (com.example.gestordecorreos.GrpsServiceProto.Respuesta) obj;
 
+      if (getExito()
+          != other.getExito()) return false;
       if (!getMensaje()
           .equals(other.getMensaje())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -1301,6 +1335,9 @@ public final class GrpsServiceProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + EXITO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getExito());
       hash = (37 * hash) + MENSAJE_FIELD_NUMBER;
       hash = (53 * hash) + getMensaje().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
@@ -1438,6 +1475,7 @@ public final class GrpsServiceProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        exito_ = false;
         mensaje_ = "";
         return this;
       }
@@ -1473,6 +1511,9 @@ public final class GrpsServiceProto {
       private void buildPartial0(com.example.gestordecorreos.GrpsServiceProto.Respuesta result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.exito_ = exito_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
           result.mensaje_ = mensaje_;
         }
       }
@@ -1489,9 +1530,12 @@ public final class GrpsServiceProto {
 
       public Builder mergeFrom(com.example.gestordecorreos.GrpsServiceProto.Respuesta other) {
         if (other == com.example.gestordecorreos.GrpsServiceProto.Respuesta.getDefaultInstance()) return this;
+        if (other.getExito() != false) {
+          setExito(other.getExito());
+        }
         if (!other.getMensaje().isEmpty()) {
           mensaje_ = other.mensaje_;
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1520,11 +1564,16 @@ public final class GrpsServiceProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                mensaje_ = input.readStringRequireUtf8();
+              case 8: {
+                exito_ = input.readBool();
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 10
+              } // case 8
+              case 18: {
+                mensaje_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1542,13 +1591,57 @@ public final class GrpsServiceProto {
       }
       private int bitField0_;
 
+      private boolean exito_ ;
+      /**
+       * <pre>
+       * Indica si la operación fue exitosa
+       * </pre>
+       *
+       * <code>bool exito = 1;</code>
+       * @return The exito.
+       */
+      @java.lang.Override
+      public boolean getExito() {
+        return exito_;
+      }
+      /**
+       * <pre>
+       * Indica si la operación fue exitosa
+       * </pre>
+       *
+       * <code>bool exito = 1;</code>
+       * @param value The exito to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExito(boolean value) {
+
+        exito_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Indica si la operación fue exitosa
+       * </pre>
+       *
+       * <code>bool exito = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearExito() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        exito_ = false;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object mensaje_ = "";
       /**
        * <pre>
        * Mensaje de confirmación o error
        * </pre>
        *
-       * <code>string mensaje = 1;</code>
+       * <code>string mensaje = 2;</code>
        * @return The mensaje.
        */
       public java.lang.String getMensaje() {
@@ -1568,7 +1661,7 @@ public final class GrpsServiceProto {
        * Mensaje de confirmación o error
        * </pre>
        *
-       * <code>string mensaje = 1;</code>
+       * <code>string mensaje = 2;</code>
        * @return The bytes for mensaje.
        */
       public com.google.protobuf.ByteString
@@ -1589,7 +1682,7 @@ public final class GrpsServiceProto {
        * Mensaje de confirmación o error
        * </pre>
        *
-       * <code>string mensaje = 1;</code>
+       * <code>string mensaje = 2;</code>
        * @param value The mensaje to set.
        * @return This builder for chaining.
        */
@@ -1597,7 +1690,7 @@ public final class GrpsServiceProto {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         mensaje_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -1606,12 +1699,12 @@ public final class GrpsServiceProto {
        * Mensaje de confirmación o error
        * </pre>
        *
-       * <code>string mensaje = 1;</code>
+       * <code>string mensaje = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearMensaje() {
         mensaje_ = getDefaultInstance().getMensaje();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -1620,7 +1713,7 @@ public final class GrpsServiceProto {
        * Mensaje de confirmación o error
        * </pre>
        *
-       * <code>string mensaje = 1;</code>
+       * <code>string mensaje = 2;</code>
        * @param value The bytes for mensaje to set.
        * @return This builder for chaining.
        */
@@ -1629,7 +1722,7 @@ public final class GrpsServiceProto {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         mensaje_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -6266,28 +6359,28 @@ public final class GrpsServiceProto {
       "\n src/main/proto/GrpsService.proto\022\017gest" +
       "ordecorreos\"Z\n\017SolicitudCorreo\022\021\n\tremite" +
       "nte\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asunt" +
-      "o\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\"\034\n\tRespuesta\022\017\n\007" +
-      "mensaje\030\001 \001(\t\"(\n\020SolicitudBandeja\022\024\n\014des" +
-      "tinatario\030\001 \001(\t\"<\n\020RespuestaBandeja\022(\n\007c" +
-      "orreos\030\001 \003(\0132\027.gestordecorreos.Correo\"&\n" +
-      "\021SolicitudEnviados\022\021\n\tremitente\030\001 \001(\t\"=\n" +
-      "\021RespuestaEnviados\022(\n\007correos\030\001 \003(\0132\027.ge" +
-      "stordecorreos.Correo\"?\n\024SolicitudMarcarL" +
-      "eido\022\024\n\014destinatario\030\001 \001(\t\022\021\n\tcorreo_id\030" +
-      "\002 \001(\005\"`\n\006Correo\022\021\n\tremitente\030\001 \001(\t\022\024\n\014de" +
-      "stinatario\030\002 \001(\t\022\016\n\006asunto\030\003 \001(\t\022\016\n\006cuer" +
-      "po\030\004 \001(\t\022\r\n\005leido\030\005 \001(\0102\370\002\n\013GrpsService\022" +
-      "L\n\014EnviarCorreo\022 .gestordecorreos.Solici" +
-      "tudCorreo\032\032.gestordecorreos.Respuesta\022]\n" +
-      "\025ObtenerBandejaEntrada\022!.gestordecorreos" +
-      ".SolicitudBandeja\032!.gestordecorreos.Resp" +
-      "uestaBandeja\022`\n\026ObtenerCorreosEnviados\022\"" +
-      ".gestordecorreos.SolicitudEnviados\032\".ges" +
-      "tordecorreos.RespuestaEnviados\022Z\n\025Marcar" +
-      "CorreoComoLeido\022%.gestordecorreos.Solici" +
-      "tudMarcarLeido\032\032.gestordecorreos.Respues" +
-      "taB/\n\033com.example.gestordecorreosB\020GrpsS" +
-      "erviceProtob\006proto3"
+      "o\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\"+\n\tRespuesta\022\r\n\005" +
+      "exito\030\001 \001(\010\022\017\n\007mensaje\030\002 \001(\t\"(\n\020Solicitu" +
+      "dBandeja\022\024\n\014destinatario\030\001 \001(\t\"<\n\020Respue" +
+      "staBandeja\022(\n\007correos\030\001 \003(\0132\027.gestordeco" +
+      "rreos.Correo\"&\n\021SolicitudEnviados\022\021\n\trem" +
+      "itente\030\001 \001(\t\"=\n\021RespuestaEnviados\022(\n\007cor" +
+      "reos\030\001 \003(\0132\027.gestordecorreos.Correo\"?\n\024S" +
+      "olicitudMarcarLeido\022\024\n\014destinatario\030\001 \001(" +
+      "\t\022\021\n\tcorreo_id\030\002 \001(\005\"`\n\006Correo\022\021\n\tremite" +
+      "nte\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asunt" +
+      "o\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\022\r\n\005leido\030\005 \001(\0102\370" +
+      "\002\n\013GrpsService\022L\n\014EnviarCorreo\022 .gestord" +
+      "ecorreos.SolicitudCorreo\032\032.gestordecorre" +
+      "os.Respuesta\022]\n\025ObtenerBandejaEntrada\022!." +
+      "gestordecorreos.SolicitudBandeja\032!.gesto" +
+      "rdecorreos.RespuestaBandeja\022`\n\026ObtenerCo" +
+      "rreosEnviados\022\".gestordecorreos.Solicitu" +
+      "dEnviados\032\".gestordecorreos.RespuestaEnv" +
+      "iados\022Z\n\025MarcarCorreoComoLeido\022%.gestord" +
+      "ecorreos.SolicitudMarcarLeido\032\032.gestorde" +
+      "correos.RespuestaB/\n\033com.example.gestord" +
+      "ecorreosB\020GrpsServiceProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6304,7 +6397,7 @@ public final class GrpsServiceProto {
     internal_static_gestordecorreos_Respuesta_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_Respuesta_descriptor,
-        new java.lang.String[] { "Mensaje", });
+        new java.lang.String[] { "Exito", "Mensaje", });
     internal_static_gestordecorreos_SolicitudBandeja_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_gestordecorreos_SolicitudBandeja_fieldAccessorTable = new

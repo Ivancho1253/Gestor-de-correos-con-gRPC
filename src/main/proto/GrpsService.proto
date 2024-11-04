@@ -24,7 +24,8 @@ message SolicitudCorreo {
 
 // Mensaje de respuesta para EnviarCorreo
 message Respuesta {
-  string mensaje = 1; // Mensaje de confirmación o error
+  bool exito = 1; // Indica si la operación fue exitosa
+  string mensaje = 2; // Mensaje de confirmación o error
 }
 
 // Mensaje de solicitud para ObtenerBandejaEntrada

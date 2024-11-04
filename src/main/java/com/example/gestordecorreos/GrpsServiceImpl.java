@@ -1,78 +1,77 @@
 package com.example.gestordecorreos;
 
-import java.util.ArrayList;
-import java.util.List;
 import io.grpc.stub.StreamObserver;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {
 
-    private final List<GrpsServiceProto.Correo> bandejaEntrada = new ArrayList<>();    // Lista para correos recibidos
-    private final List<GrpsServiceProto.Correo> correosEnviados = new ArrayList<>();   // Lista para correos enviados
+    // Mapa para almacenar correos recibidos organizados por destinatario
+    private final Map<String, List<GrpsServiceProto.Correo>> bandejaEntrada = new HashMap<>();
+    // Mapa para almacenar correos enviados organizados por remitente
+    private final Map<String, List<GrpsServiceProto.Correo>> correosEnviados = new HashMap<>();
 
     @Override
-    public void enviarCorreo(GrpsServiceProto.SolicitudCorreo solicitud, StreamObserver<GrpsServiceProto.Respuesta> responseObserver) {
+    public void enviarCorreo(GrpsServiceProto.SolicitudCorreo request, StreamObserver<GrpsServiceProto.Respuesta> responseObserver) {
+        // Obtener información del correo a enviar desde la solicitud
+        String remitente = request.getRemitente();
+        String destinatario = request.getDestinatario();
+        String asunto = request.getAsunto();
+        String cuerpo = request.getCuerpo();
+
+        // Crear un objeto 'Correo' usando los datos obtenidos
         GrpsServiceProto.Correo correo = GrpsServiceProto.Correo.newBuilder()
-                .setRemitente(solicitud.getRemitente())
-                .setDestinatario(solicitud.getDestinatario())
-                .setAsunto(solicitud.getAsunto())
-                .setCuerpo(solicitud.getCuerpo())
-                .setLeido(false)
+                .setRemitente(remitente)
+                .setDestinatario(destinatario)
+                .setAsunto(asunto)
+                .setCuerpo(cuerpo)
                 .build();
-        
-        // Agregar el correo solo a la bandeja de entrada del destinatario
-        bandejaEntrada.add(correo);
+
+        // Agregar el correo a la bandeja de entrada del destinatario.
+        // Si el destinatario no existe en el mapa, se crea una nueva lista para él.
+        bandejaEntrada.computeIfAbsent(destinatario, k -> new ArrayList<>()).add(correo);
 
         // Agregar el correo a la lista de correos enviados del remitente
-        correosEnviados.add(correo);
+        correosEnviados.computeIfAbsent(remitente, k -> new ArrayList<>()).add(correo);
 
+        // Crear una respuesta indicando que el envío fue exitoso
         GrpsServiceProto.Respuesta respuesta = GrpsServiceProto.Respuesta.newBuilder()
-                .setMensaje("Correo enviado. De: " + solicitud.getRemitente() + " Para: " + solicitud.getDestinatario() + " Asunto: " + solicitud.getAsunto() + " Mensaje: " + solicitud.getCuerpo())
+                .setExito(true)
                 .build();
+        // Enviar la respuesta al cliente y completar la comunicación
         responseObserver.onNext(respuesta);
         responseObserver.onCompleted();
     }
 
     @Override
-    public void obtenerBandejaEntrada(GrpsServiceProto.SolicitudBandeja solicitud, StreamObserver<GrpsServiceProto.RespuestaBandeja> responseObserver) {
-        List<GrpsServiceProto.Correo> bandejaUsuario = new ArrayList<>();
-        for (GrpsServiceProto.Correo correo : bandejaEntrada) {
-            // Filtrar para mostrar solo correos de remitentes distintos al destinatario
-            if (correo.getDestinatario().equals(solicitud.getDestinatario()) && 
-                !correo.getRemitente().equals(solicitud.getDestinatario())) {
-                bandejaUsuario.add(correo);
-            }
-        }
+    public void obtenerBandejaEntrada(GrpsServiceProto.SolicitudBandeja request, StreamObserver<GrpsServiceProto.RespuestaBandeja> responseObserver) {
+        String destinatario = request.getDestinatario();
 
+        // Obtener los correos de la bandeja de entrada para el destinatario solicitado
+        List<GrpsServiceProto.Correo> correos = bandejaEntrada.getOrDefault(destinatario, new ArrayList<>());
+
+        // Crear una respuesta con la lista de correos
         GrpsServiceProto.RespuestaBandeja respuesta = GrpsServiceProto.RespuestaBandeja.newBuilder()
-                .addAllCorreos(bandejaUsuario)
+                .addAllCorreos(correos)
                 .build();
+        // Enviar la respuesta con los correos y completar la comunicación
         responseObserver.onNext(respuesta);
         responseObserver.onCompleted();
     }
-
-
-
 
     @Override
-    public void obtenerCorreosEnviados(GrpsServiceProto.SolicitudEnviados solicitud, StreamObserver<GrpsServiceProto.RespuestaEnviados> responseObserver) {
-        List<GrpsServiceProto.Correo> enviadosPorUsuario = new ArrayList<>();
-        for (GrpsServiceProto.Correo correo : correosEnviados) {
-            if (correo.getRemitente().equals(solicitud.getRemitente())) {
-                enviadosPorUsuario.add(correo);
-            }
-        }
-        
-        // Mensaje de log
-        System.out.println("Mostrando correos enviados por: " + solicitud.getRemitente());
-        for (GrpsServiceProto.Correo correo : enviadosPorUsuario) {
-            System.out.println("Correo - Para: " + correo.getDestinatario() + ", Asunto: " + correo.getAsunto());
-        }
-        
+    public void obtenerCorreosEnviados(GrpsServiceProto.SolicitudEnviados request, StreamObserver<GrpsServiceProto.RespuestaEnviados> responseObserver) {
+        // Obtener los correos enviados por el remitente especificado en la solicitud
+        List<GrpsServiceProto.Correo> correos = correosEnviados.getOrDefault(request.getRemitente(), new ArrayList<>());
+
+        // Crear la respuesta con la lista de correos enviados
         GrpsServiceProto.RespuestaEnviados respuesta = GrpsServiceProto.RespuestaEnviados.newBuilder()
-                .addAllCorreos(enviadosPorUsuario)
+                .addAllCorreos(correos)
                 .build();
+        // Enviar la respuesta con los correos enviados y completar la comunicación
         responseObserver.onNext(respuesta);
         responseObserver.onCompleted();
     }
-
 }
