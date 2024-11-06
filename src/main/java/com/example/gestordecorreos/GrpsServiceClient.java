@@ -103,6 +103,8 @@ public class GrpsServiceClient {
                     String asunto = scanner.nextLine();
                     System.out.print("Mensaje: ");
                     String cuerpo = scanner.nextLine();
+                    System.out.println("----------------------------");
+
                     cliente.enviarCorreo(destinatario, asunto, cuerpo);
                     System.out.println("Correo enviado.");
                     break;
