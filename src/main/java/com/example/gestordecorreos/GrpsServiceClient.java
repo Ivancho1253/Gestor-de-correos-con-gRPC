@@ -4,49 +4,63 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GrpsServiceClient {
 
-    // Cliente gRPC de tipo bloqueante, usado para realizar llamadas síncronas al servidor
     private final GrpsServiceGrpc.GrpsServiceBlockingStub stubBloqueante;
-    // Dirección de correo del remitente predeterminado
     private static final String REMITENTE_PREDETERMINADO = "rodrigoUCP@gmail.com";
 
     public GrpsServiceClient(String host, int puerto) {
-        // Crear y configurar el canal de comunicación gRPC con el servidor
         ManagedChannel canal = ManagedChannelBuilder.forAddress(host, puerto)
-                .usePlaintext()  // Usa comunicación sin encriptar (plaintext) para desarrollo
+                .usePlaintext()
                 .build();
-        // Inicializar el cliente bloqueante
         stubBloqueante = GrpsServiceGrpc.newBlockingStub(canal);
     }
 
-    public void enviarCorreo(String destinatario, String asunto, String cuerpo) {
-        // Crear solicitud de envío de correo con datos del remitente, destinatario, asunto y cuerpo
-        GrpsServiceProto.SolicitudCorreo solicitud = GrpsServiceProto.SolicitudCorreo.newBuilder()
+    public void enviarCorreo(List<String> destinatarios, String grupo, String asunto, String cuerpo) {
+        // Construir la solicitud de correo
+        GrpsServiceProto.SolicitudCorreo.Builder solicitudBuilder = GrpsServiceProto.SolicitudCorreo.newBuilder()
                 .setRemitente(REMITENTE_PREDETERMINADO)
-                .setDestinatario(destinatario)
                 .setAsunto(asunto)
-                .setCuerpo(cuerpo)
-                .build();
-        // Enviar la solicitud al servidor y recibir la respuesta
-        GrpsServiceProto.Respuesta respuesta = stubBloqueante.enviarCorreo(solicitud);
+                .setCuerpo(cuerpo);
+
+        // Verificar si se debe enviar a un grupo o a destinatarios individuales
+        if (!grupo.isEmpty()) {
+            solicitudBuilder.setGrupo(grupo);
+            System.out.println("Enviando correo al grupo: " + grupo);
+        } else {
+            solicitudBuilder.addAllDestinatarios(destinatarios);
+            System.out.println("Enviando correo a los destinatarios individuales: " + destinatarios);
+        }
+
+        // Crear la solicitud final
+        GrpsServiceProto.SolicitudCorreo solicitud = solicitudBuilder.build();
+        
+        // Enviar la solicitud y obtener la respuesta
+        try {
+            GrpsServiceProto.Respuesta respuesta = stubBloqueante.enviarCorreo(solicitud);
+            if (respuesta.getExito()) {
+                System.out.println("Correo enviado exitosamente.");
+            } else {
+                System.out.println("No se pudo enviar el correo.");
+            }
+        } catch (StatusRuntimeException e) {
+            System.err.println("Error de RPC: " + e.getStatus());
+        }
     }
 
     public void verCorreosRecibidos() {
-        // Crear una solicitud para obtener la bandeja de entrada del destinatario predeterminado
         String destinatario = REMITENTE_PREDETERMINADO;
-
         GrpsServiceProto.SolicitudBandeja solicitud = GrpsServiceProto.SolicitudBandeja.newBuilder()
                 .setDestinatario(destinatario)
                 .build();
 
         try {
-            // Llama al servidor para obtener la bandeja de entrada del destinatario
             GrpsServiceProto.RespuestaBandeja respuesta = stubBloqueante.obtenerBandejaEntrada(solicitud);
             System.out.println("Correos recibidos para " + destinatario + ":");
-            // Imprimir los detalles de cada correo recibido
             for (GrpsServiceProto.Correo correo : respuesta.getCorreosList()) {
                 System.out.println("De: " + correo.getRemitente());
                 System.out.println("Asunto: " + correo.getAsunto());
@@ -59,16 +73,13 @@ public class GrpsServiceClient {
     }
 
     public void verCorreosEnviados() {
-        // Crear una solicitud para obtener la lista de correos enviados por el remitente predeterminado
         GrpsServiceProto.SolicitudEnviados solicitud = GrpsServiceProto.SolicitudEnviados.newBuilder()
                 .setRemitente(REMITENTE_PREDETERMINADO)
                 .build();
 
         try {
-            // Llama al servidor para obtener la lista de correos enviados
             GrpsServiceProto.RespuestaEnviados respuesta = stubBloqueante.obtenerCorreosEnviados(solicitud);
             System.out.println("Correos enviados por " + REMITENTE_PREDETERMINADO + ":");
-            // Imprimir los detalles de cada correo enviado
             for (GrpsServiceProto.Correo correo : respuesta.getCorreosList()) {
                 System.out.println("Para: " + correo.getDestinatario());
                 System.out.println("Asunto: " + correo.getAsunto());
@@ -81,7 +92,6 @@ public class GrpsServiceClient {
     }
 
     public static void main(String[] args) {
-        // Inicializar el cliente gRPC para conectarse al servidor en localhost en el puerto 50051
         GrpsServiceClient cliente = new GrpsServiceClient("localhost", 50051);
         Scanner scanner = new Scanner(System.in);
 
@@ -90,37 +100,49 @@ public class GrpsServiceClient {
             System.out.println("1. Enviar un correo");
             System.out.println("2. Ver correos recibidos");
             System.out.println("3. Ver correos enviados");
-            System.out.print("Seleccione una opcion: ");
+            System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine();  // Consumir la nueva línea después de leer un entero
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
-                    // Solicita los datos del correo y lo envía
-                    System.out.print("Para: ");
-                    String destinatario = scanner.nextLine();
+                    System.out.print("Enviar a un grupo? (s/n): ");
+                    String enviarAGrupo = scanner.nextLine();
+                    List<String> destinatarios = new ArrayList<>();
+                    String grupo = "";
+
+                    if (enviarAGrupo.equalsIgnoreCase("s")) {
+                        System.out.print("Nombre del grupo: ");
+                        grupo = scanner.nextLine();
+                        System.out.print("Ingrese los destinatarios separados por coma: ");
+                        String[] destArray = scanner.nextLine().split(",");
+                        for (String dest : destArray) {
+                            destinatarios.add(dest.trim());
+                        }
+                    } else {
+                        System.out.print("Para: ");
+                        String destinatario = scanner.nextLine();
+                        destinatarios.add(destinatario);
+                    }
+
                     System.out.print("Asunto: ");
                     String asunto = scanner.nextLine();
                     System.out.print("Mensaje: ");
                     String cuerpo = scanner.nextLine();
-                    System.out.println("----------------------------");
 
-                    cliente.enviarCorreo(destinatario, asunto, cuerpo);
-                    System.out.println("Correo enviado.");
+                    cliente.enviarCorreo(destinatarios, grupo, asunto, cuerpo);
                     break;
 
                 case 2:
-                    // Muestra la bandeja de entrada del destinatario predeterminado
                     cliente.verCorreosRecibidos();
                     break;
 
                 case 3:
-                    // Muestra la lista de correos enviados por el remitente predeterminado
                     cliente.verCorreosEnviados();
                     break;
 
                 default:
-                    System.out.println("Opcion no valida.");
+                    System.out.println("Opción no válida.");
             }
         }
     }

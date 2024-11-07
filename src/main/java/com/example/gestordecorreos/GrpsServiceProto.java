@@ -30,19 +30,11 @@ public final class GrpsServiceProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * Remitente del correo
-     * </pre>
-     *
      * <code>string remitente = 1;</code>
      * @return The remitente.
      */
     java.lang.String getRemitente();
     /**
-     * <pre>
-     * Remitente del correo
-     * </pre>
-     *
      * <code>string remitente = 1;</code>
      * @return The bytes for remitente.
      */
@@ -50,19 +42,11 @@ public final class GrpsServiceProto {
         getRemitenteBytes();
 
     /**
-     * <pre>
-     * Destinatario del correo
-     * </pre>
-     *
      * <code>string destinatario = 2;</code>
      * @return The destinatario.
      */
     java.lang.String getDestinatario();
     /**
-     * <pre>
-     * Destinatario del correo
-     * </pre>
-     *
      * <code>string destinatario = 2;</code>
      * @return The bytes for destinatario.
      */
@@ -70,19 +54,11 @@ public final class GrpsServiceProto {
         getDestinatarioBytes();
 
     /**
-     * <pre>
-     * Asunto del correo
-     * </pre>
-     *
      * <code>string asunto = 3;</code>
      * @return The asunto.
      */
     java.lang.String getAsunto();
     /**
-     * <pre>
-     * Asunto del correo
-     * </pre>
-     *
      * <code>string asunto = 3;</code>
      * @return The bytes for asunto.
      */
@@ -90,24 +66,77 @@ public final class GrpsServiceProto {
         getAsuntoBytes();
 
     /**
-     * <pre>
-     * Contenido del correo
-     * </pre>
-     *
      * <code>string cuerpo = 4;</code>
      * @return The cuerpo.
      */
     java.lang.String getCuerpo();
     /**
-     * <pre>
-     * Contenido del correo
-     * </pre>
-     *
      * <code>string cuerpo = 4;</code>
      * @return The bytes for cuerpo.
      */
     com.google.protobuf.ByteString
         getCuerpoBytes();
+
+    /**
+     * <pre>
+     * Campo para enviar a un grupo
+     * </pre>
+     *
+     * <code>string grupo = 5;</code>
+     * @return The grupo.
+     */
+    java.lang.String getGrupo();
+    /**
+     * <pre>
+     * Campo para enviar a un grupo
+     * </pre>
+     *
+     * <code>string grupo = 5;</code>
+     * @return The bytes for grupo.
+     */
+    com.google.protobuf.ByteString
+        getGrupoBytes();
+
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @return A list containing the destinatarios.
+     */
+    java.util.List<java.lang.String>
+        getDestinatariosList();
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @return The count of destinatarios.
+     */
+    int getDestinatariosCount();
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @param index The index of the element to return.
+     * @return The destinatarios at the given index.
+     */
+    java.lang.String getDestinatarios(int index);
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the destinatarios at the given index.
+     */
+    com.google.protobuf.ByteString
+        getDestinatariosBytes(int index);
   }
   /**
    * <pre>
@@ -139,6 +168,9 @@ public final class GrpsServiceProto {
       destinatario_ = "";
       asunto_ = "";
       cuerpo_ = "";
+      grupo_ = "";
+      destinatarios_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -158,10 +190,6 @@ public final class GrpsServiceProto {
     @SuppressWarnings("serial")
     private volatile java.lang.Object remitente_ = "";
     /**
-     * <pre>
-     * Remitente del correo
-     * </pre>
-     *
      * <code>string remitente = 1;</code>
      * @return The remitente.
      */
@@ -179,10 +207,6 @@ public final class GrpsServiceProto {
       }
     }
     /**
-     * <pre>
-     * Remitente del correo
-     * </pre>
-     *
      * <code>string remitente = 1;</code>
      * @return The bytes for remitente.
      */
@@ -205,10 +229,6 @@ public final class GrpsServiceProto {
     @SuppressWarnings("serial")
     private volatile java.lang.Object destinatario_ = "";
     /**
-     * <pre>
-     * Destinatario del correo
-     * </pre>
-     *
      * <code>string destinatario = 2;</code>
      * @return The destinatario.
      */
@@ -226,10 +246,6 @@ public final class GrpsServiceProto {
       }
     }
     /**
-     * <pre>
-     * Destinatario del correo
-     * </pre>
-     *
      * <code>string destinatario = 2;</code>
      * @return The bytes for destinatario.
      */
@@ -252,10 +268,6 @@ public final class GrpsServiceProto {
     @SuppressWarnings("serial")
     private volatile java.lang.Object asunto_ = "";
     /**
-     * <pre>
-     * Asunto del correo
-     * </pre>
-     *
      * <code>string asunto = 3;</code>
      * @return The asunto.
      */
@@ -273,10 +285,6 @@ public final class GrpsServiceProto {
       }
     }
     /**
-     * <pre>
-     * Asunto del correo
-     * </pre>
-     *
      * <code>string asunto = 3;</code>
      * @return The bytes for asunto.
      */
@@ -299,10 +307,6 @@ public final class GrpsServiceProto {
     @SuppressWarnings("serial")
     private volatile java.lang.Object cuerpo_ = "";
     /**
-     * <pre>
-     * Contenido del correo
-     * </pre>
-     *
      * <code>string cuerpo = 4;</code>
      * @return The cuerpo.
      */
@@ -320,10 +324,6 @@ public final class GrpsServiceProto {
       }
     }
     /**
-     * <pre>
-     * Contenido del correo
-     * </pre>
-     *
      * <code>string cuerpo = 4;</code>
      * @return The bytes for cuerpo.
      */
@@ -340,6 +340,106 @@ public final class GrpsServiceProto {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int GRUPO_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object grupo_ = "";
+    /**
+     * <pre>
+     * Campo para enviar a un grupo
+     * </pre>
+     *
+     * <code>string grupo = 5;</code>
+     * @return The grupo.
+     */
+    @java.lang.Override
+    public java.lang.String getGrupo() {
+      java.lang.Object ref = grupo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        grupo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Campo para enviar a un grupo
+     * </pre>
+     *
+     * <code>string grupo = 5;</code>
+     * @return The bytes for grupo.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getGrupoBytes() {
+      java.lang.Object ref = grupo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        grupo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESTINATARIOS_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList destinatarios_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @return A list containing the destinatarios.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getDestinatariosList() {
+      return destinatarios_;
+    }
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @return The count of destinatarios.
+     */
+    public int getDestinatariosCount() {
+      return destinatarios_.size();
+    }
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @param index The index of the element to return.
+     * @return The destinatarios at the given index.
+     */
+    public java.lang.String getDestinatarios(int index) {
+      return destinatarios_.get(index);
+    }
+    /**
+     * <pre>
+     * Campo para múltiples destinatarios
+     * </pre>
+     *
+     * <code>repeated string destinatarios = 6;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the destinatarios at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getDestinatariosBytes(int index) {
+      return destinatarios_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -368,6 +468,12 @@ public final class GrpsServiceProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(cuerpo_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, cuerpo_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(grupo_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, grupo_);
+      }
+      for (int i = 0; i < destinatarios_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, destinatarios_.getRaw(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -388,6 +494,17 @@ public final class GrpsServiceProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(cuerpo_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, cuerpo_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(grupo_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, grupo_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < destinatarios_.size(); i++) {
+          dataSize += computeStringSizeNoTag(destinatarios_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getDestinatariosList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -412,6 +529,10 @@ public final class GrpsServiceProto {
           .equals(other.getAsunto())) return false;
       if (!getCuerpo()
           .equals(other.getCuerpo())) return false;
+      if (!getGrupo()
+          .equals(other.getGrupo())) return false;
+      if (!getDestinatariosList()
+          .equals(other.getDestinatariosList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -431,6 +552,12 @@ public final class GrpsServiceProto {
       hash = (53 * hash) + getAsunto().hashCode();
       hash = (37 * hash) + CUERPO_FIELD_NUMBER;
       hash = (53 * hash) + getCuerpo().hashCode();
+      hash = (37 * hash) + GRUPO_FIELD_NUMBER;
+      hash = (53 * hash) + getGrupo().hashCode();
+      if (getDestinatariosCount() > 0) {
+        hash = (37 * hash) + DESTINATARIOS_FIELD_NUMBER;
+        hash = (53 * hash) + getDestinatariosList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -570,6 +697,9 @@ public final class GrpsServiceProto {
         destinatario_ = "";
         asunto_ = "";
         cuerpo_ = "";
+        grupo_ = "";
+        destinatarios_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
         return this;
       }
 
@@ -615,6 +745,13 @@ public final class GrpsServiceProto {
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.cuerpo_ = cuerpo_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.grupo_ = grupo_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          destinatarios_.makeImmutable();
+          result.destinatarios_ = destinatarios_;
+        }
       }
 
       @java.lang.Override
@@ -647,6 +784,21 @@ public final class GrpsServiceProto {
         if (!other.getCuerpo().isEmpty()) {
           cuerpo_ = other.cuerpo_;
           bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getGrupo().isEmpty()) {
+          grupo_ = other.grupo_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.destinatarios_.isEmpty()) {
+          if (destinatarios_.isEmpty()) {
+            destinatarios_ = other.destinatarios_;
+            bitField0_ |= 0x00000020;
+          } else {
+            ensureDestinatariosIsMutable();
+            destinatarios_.addAll(other.destinatarios_);
+          }
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -695,6 +847,17 @@ public final class GrpsServiceProto {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 42: {
+                grupo_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureDestinatariosIsMutable();
+                destinatarios_.add(s);
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -714,10 +877,6 @@ public final class GrpsServiceProto {
 
       private java.lang.Object remitente_ = "";
       /**
-       * <pre>
-       * Remitente del correo
-       * </pre>
-       *
        * <code>string remitente = 1;</code>
        * @return The remitente.
        */
@@ -734,10 +893,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Remitente del correo
-       * </pre>
-       *
        * <code>string remitente = 1;</code>
        * @return The bytes for remitente.
        */
@@ -755,10 +910,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Remitente del correo
-       * </pre>
-       *
        * <code>string remitente = 1;</code>
        * @param value The remitente to set.
        * @return This builder for chaining.
@@ -772,10 +923,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Remitente del correo
-       * </pre>
-       *
        * <code>string remitente = 1;</code>
        * @return This builder for chaining.
        */
@@ -786,10 +933,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Remitente del correo
-       * </pre>
-       *
        * <code>string remitente = 1;</code>
        * @param value The bytes for remitente to set.
        * @return This builder for chaining.
@@ -806,10 +949,6 @@ public final class GrpsServiceProto {
 
       private java.lang.Object destinatario_ = "";
       /**
-       * <pre>
-       * Destinatario del correo
-       * </pre>
-       *
        * <code>string destinatario = 2;</code>
        * @return The destinatario.
        */
@@ -826,10 +965,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Destinatario del correo
-       * </pre>
-       *
        * <code>string destinatario = 2;</code>
        * @return The bytes for destinatario.
        */
@@ -847,10 +982,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Destinatario del correo
-       * </pre>
-       *
        * <code>string destinatario = 2;</code>
        * @param value The destinatario to set.
        * @return This builder for chaining.
@@ -864,10 +995,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Destinatario del correo
-       * </pre>
-       *
        * <code>string destinatario = 2;</code>
        * @return This builder for chaining.
        */
@@ -878,10 +1005,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Destinatario del correo
-       * </pre>
-       *
        * <code>string destinatario = 2;</code>
        * @param value The bytes for destinatario to set.
        * @return This builder for chaining.
@@ -898,10 +1021,6 @@ public final class GrpsServiceProto {
 
       private java.lang.Object asunto_ = "";
       /**
-       * <pre>
-       * Asunto del correo
-       * </pre>
-       *
        * <code>string asunto = 3;</code>
        * @return The asunto.
        */
@@ -918,10 +1037,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Asunto del correo
-       * </pre>
-       *
        * <code>string asunto = 3;</code>
        * @return The bytes for asunto.
        */
@@ -939,10 +1054,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Asunto del correo
-       * </pre>
-       *
        * <code>string asunto = 3;</code>
        * @param value The asunto to set.
        * @return This builder for chaining.
@@ -956,10 +1067,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Asunto del correo
-       * </pre>
-       *
        * <code>string asunto = 3;</code>
        * @return This builder for chaining.
        */
@@ -970,10 +1077,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Asunto del correo
-       * </pre>
-       *
        * <code>string asunto = 3;</code>
        * @param value The bytes for asunto to set.
        * @return This builder for chaining.
@@ -990,10 +1093,6 @@ public final class GrpsServiceProto {
 
       private java.lang.Object cuerpo_ = "";
       /**
-       * <pre>
-       * Contenido del correo
-       * </pre>
-       *
        * <code>string cuerpo = 4;</code>
        * @return The cuerpo.
        */
@@ -1010,10 +1109,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Contenido del correo
-       * </pre>
-       *
        * <code>string cuerpo = 4;</code>
        * @return The bytes for cuerpo.
        */
@@ -1031,10 +1126,6 @@ public final class GrpsServiceProto {
         }
       }
       /**
-       * <pre>
-       * Contenido del correo
-       * </pre>
-       *
        * <code>string cuerpo = 4;</code>
        * @param value The cuerpo to set.
        * @return This builder for chaining.
@@ -1048,10 +1139,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Contenido del correo
-       * </pre>
-       *
        * <code>string cuerpo = 4;</code>
        * @return This builder for chaining.
        */
@@ -1062,10 +1149,6 @@ public final class GrpsServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Contenido del correo
-       * </pre>
-       *
        * <code>string cuerpo = 4;</code>
        * @param value The bytes for cuerpo to set.
        * @return This builder for chaining.
@@ -1076,6 +1159,245 @@ public final class GrpsServiceProto {
         checkByteStringIsUtf8(value);
         cuerpo_ = value;
         bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object grupo_ = "";
+      /**
+       * <pre>
+       * Campo para enviar a un grupo
+       * </pre>
+       *
+       * <code>string grupo = 5;</code>
+       * @return The grupo.
+       */
+      public java.lang.String getGrupo() {
+        java.lang.Object ref = grupo_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          grupo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Campo para enviar a un grupo
+       * </pre>
+       *
+       * <code>string grupo = 5;</code>
+       * @return The bytes for grupo.
+       */
+      public com.google.protobuf.ByteString
+          getGrupoBytes() {
+        java.lang.Object ref = grupo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          grupo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Campo para enviar a un grupo
+       * </pre>
+       *
+       * <code>string grupo = 5;</code>
+       * @param value The grupo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGrupo(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        grupo_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Campo para enviar a un grupo
+       * </pre>
+       *
+       * <code>string grupo = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGrupo() {
+        grupo_ = getDefaultInstance().getGrupo();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Campo para enviar a un grupo
+       * </pre>
+       *
+       * <code>string grupo = 5;</code>
+       * @param value The bytes for grupo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGrupoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        grupo_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList destinatarios_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureDestinatariosIsMutable() {
+        if (!destinatarios_.isModifiable()) {
+          destinatarios_ = new com.google.protobuf.LazyStringArrayList(destinatarios_);
+        }
+        bitField0_ |= 0x00000020;
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @return A list containing the destinatarios.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getDestinatariosList() {
+        destinatarios_.makeImmutable();
+        return destinatarios_;
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @return The count of destinatarios.
+       */
+      public int getDestinatariosCount() {
+        return destinatarios_.size();
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @param index The index of the element to return.
+       * @return The destinatarios at the given index.
+       */
+      public java.lang.String getDestinatarios(int index) {
+        return destinatarios_.get(index);
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the destinatarios at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getDestinatariosBytes(int index) {
+        return destinatarios_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @param index The index to set the value at.
+       * @param value The destinatarios to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestinatarios(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureDestinatariosIsMutable();
+        destinatarios_.set(index, value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @param value The destinatarios to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDestinatarios(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureDestinatariosIsMutable();
+        destinatarios_.add(value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @param values The destinatarios to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDestinatarios(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureDestinatariosIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, destinatarios_);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDestinatarios() {
+        destinatarios_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000020);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Campo para múltiples destinatarios
+       * </pre>
+       *
+       * <code>repeated string destinatarios = 6;</code>
+       * @param value The bytes of the destinatarios to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDestinatariosBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureDestinatariosIsMutable();
+        destinatarios_.add(value);
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -6357,30 +6679,31 @@ public final class GrpsServiceProto {
   static {
     java.lang.String[] descriptorData = {
       "\n src/main/proto/GrpsService.proto\022\017gest" +
-      "ordecorreos\"Z\n\017SolicitudCorreo\022\021\n\tremite" +
-      "nte\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asunt" +
-      "o\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\"+\n\tRespuesta\022\r\n\005" +
-      "exito\030\001 \001(\010\022\017\n\007mensaje\030\002 \001(\t\"(\n\020Solicitu" +
-      "dBandeja\022\024\n\014destinatario\030\001 \001(\t\"<\n\020Respue" +
-      "staBandeja\022(\n\007correos\030\001 \003(\0132\027.gestordeco" +
-      "rreos.Correo\"&\n\021SolicitudEnviados\022\021\n\trem" +
-      "itente\030\001 \001(\t\"=\n\021RespuestaEnviados\022(\n\007cor" +
-      "reos\030\001 \003(\0132\027.gestordecorreos.Correo\"?\n\024S" +
-      "olicitudMarcarLeido\022\024\n\014destinatario\030\001 \001(" +
-      "\t\022\021\n\tcorreo_id\030\002 \001(\005\"`\n\006Correo\022\021\n\tremite" +
-      "nte\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asunt" +
-      "o\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\022\r\n\005leido\030\005 \001(\0102\370" +
-      "\002\n\013GrpsService\022L\n\014EnviarCorreo\022 .gestord" +
-      "ecorreos.SolicitudCorreo\032\032.gestordecorre" +
-      "os.Respuesta\022]\n\025ObtenerBandejaEntrada\022!." +
-      "gestordecorreos.SolicitudBandeja\032!.gesto" +
-      "rdecorreos.RespuestaBandeja\022`\n\026ObtenerCo" +
-      "rreosEnviados\022\".gestordecorreos.Solicitu" +
-      "dEnviados\032\".gestordecorreos.RespuestaEnv" +
-      "iados\022Z\n\025MarcarCorreoComoLeido\022%.gestord" +
-      "ecorreos.SolicitudMarcarLeido\032\032.gestorde" +
-      "correos.RespuestaB/\n\033com.example.gestord" +
-      "ecorreosB\020GrpsServiceProtob\006proto3"
+      "ordecorreos\"\200\001\n\017SolicitudCorreo\022\021\n\tremit" +
+      "ente\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asun" +
+      "to\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\022\r\n\005grupo\030\005 \001(\t\022" +
+      "\025\n\rdestinatarios\030\006 \003(\t\"+\n\tRespuesta\022\r\n\005e" +
+      "xito\030\001 \001(\010\022\017\n\007mensaje\030\002 \001(\t\"(\n\020Solicitud" +
+      "Bandeja\022\024\n\014destinatario\030\001 \001(\t\"<\n\020Respues" +
+      "taBandeja\022(\n\007correos\030\001 \003(\0132\027.gestordecor" +
+      "reos.Correo\"&\n\021SolicitudEnviados\022\021\n\tremi" +
+      "tente\030\001 \001(\t\"=\n\021RespuestaEnviados\022(\n\007corr" +
+      "eos\030\001 \003(\0132\027.gestordecorreos.Correo\"?\n\024So" +
+      "licitudMarcarLeido\022\024\n\014destinatario\030\001 \001(\t" +
+      "\022\021\n\tcorreo_id\030\002 \001(\005\"`\n\006Correo\022\021\n\tremiten" +
+      "te\030\001 \001(\t\022\024\n\014destinatario\030\002 \001(\t\022\016\n\006asunto" +
+      "\030\003 \001(\t\022\016\n\006cuerpo\030\004 \001(\t\022\r\n\005leido\030\005 \001(\0102\370\002" +
+      "\n\013GrpsService\022L\n\014EnviarCorreo\022 .gestorde" +
+      "correos.SolicitudCorreo\032\032.gestordecorreo" +
+      "s.Respuesta\022]\n\025ObtenerBandejaEntrada\022!.g" +
+      "estordecorreos.SolicitudBandeja\032!.gestor" +
+      "decorreos.RespuestaBandeja\022`\n\026ObtenerCor" +
+      "reosEnviados\022\".gestordecorreos.Solicitud" +
+      "Enviados\032\".gestordecorreos.RespuestaEnvi" +
+      "ados\022Z\n\025MarcarCorreoComoLeido\022%.gestorde" +
+      "correos.SolicitudMarcarLeido\032\032.gestordec" +
+      "orreos.RespuestaB/\n\033com.example.gestorde" +
+      "correosB\020GrpsServiceProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6391,7 +6714,7 @@ public final class GrpsServiceProto {
     internal_static_gestordecorreos_SolicitudCorreo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_gestordecorreos_SolicitudCorreo_descriptor,
-        new java.lang.String[] { "Remitente", "Destinatario", "Asunto", "Cuerpo", });
+        new java.lang.String[] { "Remitente", "Destinatario", "Asunto", "Cuerpo", "Grupo", "Destinatarios", });
     internal_static_gestordecorreos_Respuesta_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_gestordecorreos_Respuesta_fieldAccessorTable = new

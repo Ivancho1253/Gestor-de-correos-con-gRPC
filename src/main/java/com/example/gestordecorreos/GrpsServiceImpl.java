@@ -12,26 +12,36 @@ public class GrpsServiceImpl extends GrpsServiceGrpc.GrpsServiceImplBase {
     private final Map<String, List<GrpsServiceProto.Correo>> bandejaEntrada = new HashMap<>();
     // Mapa para almacenar correos enviados organizados por remitente
     private final Map<String, List<GrpsServiceProto.Correo>> correosEnviados = new HashMap<>();
+    private final GruposDeUsuarios gruposDeUsuarios = new GruposDeUsuarios(); // Inicializar gruposDeUsuarios
+
 
     @Override
     public void enviarCorreo(GrpsServiceProto.SolicitudCorreo request, StreamObserver<GrpsServiceProto.Respuesta> responseObserver) {
         // Obtener información del correo a enviar desde la solicitud
         String remitente = request.getRemitente();
-        String destinatario = request.getDestinatario();
         String asunto = request.getAsunto();
         String cuerpo = request.getCuerpo();
 
         // Crear un objeto 'Correo' usando los datos obtenidos
         GrpsServiceProto.Correo correo = GrpsServiceProto.Correo.newBuilder()
                 .setRemitente(remitente)
-                .setDestinatario(destinatario)
                 .setAsunto(asunto)
                 .setCuerpo(cuerpo)
                 .build();
 
-        // Agregar el correo a la bandeja de entrada del destinatario.
-        // Si el destinatario no existe en el mapa, se crea una nueva lista para él.
-        bandejaEntrada.computeIfAbsent(destinatario, k -> new ArrayList<>()).add(correo);
+        if (!request.getGrupo().isEmpty()) {
+            // Enviar a todos los miembros de un grupo
+            List<Contacto> miembros = gruposDeUsuarios.obtenerMiembros();
+
+            for (Contacto miembro : miembros) {
+                bandejaEntrada.computeIfAbsent(miembro.getCorreo(), k -> new ArrayList<>()).add(correo);
+            }
+        } else {
+            // Enviar a múltiples destinatarios individuales
+            for (String destinatario : request.getDestinatariosList()) {
+                bandejaEntrada.computeIfAbsent(destinatario, k -> new ArrayList<>()).add(correo);
+            }
+        }
 
         // Agregar el correo a la lista de correos enviados del remitente
         correosEnviados.computeIfAbsent(remitente, k -> new ArrayList<>()).add(correo);
