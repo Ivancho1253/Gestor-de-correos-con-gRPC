@@ -32,6 +32,14 @@ public class Bandeja {
         }
            
     }
+    public void agregarAFavoritos(Email emailFavorito) {
+        if (!favoritos.contains(emailFavorito)) {
+            favoritos.add(emailFavorito);
+            System.out.println("Correo marcado como favorito.");
+        } else {
+            System.out.println("Este correo ya está en favoritos.");
+        }
+    }
 
     
 }

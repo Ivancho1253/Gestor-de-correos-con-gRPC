@@ -27,6 +27,9 @@ public class Email {
         setRemitente(remitente);
         setDestinatarios(destinatarios);
     }
+    public Email(String remitente, String asunto, String contenido) {
+
+    }
 
     public String getAsunto() {
         return asunto;

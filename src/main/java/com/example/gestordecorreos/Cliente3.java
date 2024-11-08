@@ -8,31 +8,26 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 
 public class Cliente3 {
-
-    // Cliente gRPC de tipo bloqueante para realizar llamadas síncronas al servidor
     private final GrpsServiceGrpc.GrpsServiceBlockingStub stubBloqueante;
+    private final Bandeja bandeja; // Instancia de la bandeja para almacenar correos
 
     public Cliente3(String host, int puerto) {
-        // Configura el canal de comunicación gRPC
         ManagedChannel canal = ManagedChannelBuilder.forAddress(host, puerto)
-                .usePlaintext()  // Usa conexión sin cifrado (plaintext) para desarrollo
+                .usePlaintext()
                 .build();
-        // Inicializar el cliente bloqueante para realizar las llamadas RPC
         stubBloqueante = GrpsServiceGrpc.newBlockingStub(canal);
+        bandeja = new Bandeja();
     }
 
     public void consultarBandejaEntrada(String destinatario) {
-        // Crear una solicitud para consultar la bandeja de entrada del destinatario especificado
         GrpsServiceProto.SolicitudBandeja solicitud = GrpsServiceProto.SolicitudBandeja.newBuilder()
                 .setDestinatario(destinatario)
                 .build();
 
         try {
-            // Llamada al servidor para obtener los correos en la bandeja de entrada del destinatario
             GrpsServiceProto.RespuestaBandeja respuesta = stubBloqueante.obtenerBandejaEntrada(solicitud);
             List<GrpsServiceProto.Correo> correos = respuesta.getCorreosList();
 
-            // Verificar si la bandeja de entrada está vacía
             if (correos.isEmpty()) {
                 System.out.println("No hay correos en la bandeja de entrada para " + destinatario + ".");
                 return;
@@ -42,55 +37,78 @@ public class Cliente3 {
             boolean continuar = true;
 
             while (continuar) {
-                // Mostrar una lista con los correos disponibles en la bandeja de entrada
-                System.out.println("\nBandeja de entrada para " + destinatario + ":");
-                for (int i = 0; i < correos.size(); i++) {
-                    GrpsServiceProto.Correo correo = correos.get(i);
-                    System.out.println("Correo #" + (i + 1));
-                    System.out.println("De: " + correo.getRemitente());
-                    System.out.println("Asunto: " + correo.getAsunto());
-                    System.out.println("----------------------------");
-                }
+                System.out.println("\nOpciones:");
+                System.out.println("1. Ver correos en bandeja de entrada");
+                System.out.println("2. Ver correos favoritos");
+                System.out.println("0. Salir");
+                System.out.print("Selecciona una opción: ");
+                int opcion = scanner.nextInt();
 
-                // Solicitar al usuario seleccionar un correo para ver los detalles
-                System.out.print("\nIngresa el número del correo que deseas leer en detalle (0 para salir): ");
-                int indiceCorreo = scanner.nextInt();
-
-                // Manejar la salida si el usuario ingresa 0
-                if (indiceCorreo == 0) {
+                if (opcion == 0) {
                     continuar = false;
-                } else if (indiceCorreo > 0 && indiceCorreo <= correos.size()) {
-                    // Mostrar detalles completos del correo seleccionado
-                    GrpsServiceProto.Correo correoSeleccionado = correos.get(indiceCorreo - 1);
-                    System.out.println("\nDetalles del correo seleccionado:");
-                    System.out.println("De: " + correoSeleccionado.getRemitente());
-                    System.out.println("Asunto: " + correoSeleccionado.getAsunto());
-                    System.out.println("Mensaje: " + correoSeleccionado.getCuerpo());
-                    System.out.println("----------------------------");
-
+                } else if (opcion == 1) {
+                    mostrarCorreos(correos, scanner);
+                } else if (opcion == 2) {
+                    mostrarFavoritos();
                 } else {
-                    System.out.println("Número de correo no válido.");
-                }
-
-                // Preguntar al usuario si quiere ver otro correo
-                if (continuar) {
-                    System.out.print("¿Deseas ver otro correo? (si/no): ");
-                    continuar = scanner.next().equalsIgnoreCase("si");
+                    System.out.println("Opción no válida.");
                 }
             }
 
-            System.out.println("Saliendo de la bandeja de entrada...");
+            System.out.println("Saliendo del cliente de correos...");
 
         } catch (StatusRuntimeException e) {
-            // Captura errores de comunicación con el servidor y muestra el estado de error
             System.err.println("Error de RPC: " + e.getStatus());
         }
     }
 
+    private void mostrarCorreos(List<GrpsServiceProto.Correo> correos, Scanner scanner) {
+        System.out.println("\nBandeja de entrada:");
+        for (int i = 0; i < correos.size(); i++) {
+            GrpsServiceProto.Correo correo = correos.get(i);
+            System.out.println("Correo #" + (i + 1));
+            System.out.println("De: " + correo.getRemitente());
+            System.out.println("Asunto: " + correo.getAsunto());
+            System.out.println("----------------------------");
+        }
+
+        System.out.print("\nIngresa el número del correo que deseas leer en detalle (0 para salir): ");
+        int indiceCorreo = scanner.nextInt();
+
+        if (indiceCorreo > 0 && indiceCorreo <= correos.size()) {
+            GrpsServiceProto.Correo correoSeleccionado = correos.get(indiceCorreo - 1);
+            Email email = new Email(correoSeleccionado.getRemitente(), correoSeleccionado.getAsunto(), correoSeleccionado.getCuerpo());
+            System.out.println("\nDetalles del correo seleccionado:");
+            System.out.println("De: " + correoSeleccionado.getRemitente());
+            System.out.println("Asunto: " + correoSeleccionado.getAsunto());
+            System.out.println("Mensaje: " + correoSeleccionado.getCuerpo());
+            System.out.println("----------------------------");
+
+            System.out.print("¿Quieres marcar este correo como favorito? (si/no): ");
+            if (scanner.next().equalsIgnoreCase("si")) {
+                bandeja.agregarAFavoritos(email);
+            }
+        } else if (indiceCorreo != 0) {
+            System.out.println("Número de correo no válido.");
+        }
+    }
+
+    private void mostrarFavoritos() {
+        List<Email> favoritos = bandeja.getFavoritos();
+        if (favoritos.isEmpty()) {
+            System.out.println("No tienes correos en favoritos.");
+        } else {
+            System.out.println("\nLista de correos favoritos:");
+            for (Email favorito : favoritos) {
+                System.out.println("De: " + favorito.getRemitente());
+                System.out.println("Asunto: " + favorito.getAsunto());
+                System.out.println("----------------------------");
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        // Inicializa un cliente para conectarse al servidor gRPC en localhost en el puerto 50051
         Cliente3 clienteTercero = new Cliente3("localhost", 50051);//192.168.0.165
-        // Consultar la bandeja de entrada de un destinatario específico
         clienteTercero.consultarBandejaEntrada("IvanUCP@gmail.com");
     }
 }
