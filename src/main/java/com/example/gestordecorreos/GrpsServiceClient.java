@@ -90,9 +90,26 @@ public class GrpsServiceClient {
             System.err.println("Error de RPC: " + e.getStatus());
         }
     }
+    public void enviarCorreoAGrupoPredeterminado(String asunto, String cuerpo) {
+        // Crear una instancia de GruposDeUsuarios
+        GruposDeUsuarios grupo = new GruposDeUsuarios();
+        
+        // Agregar contactos predeterminados al grupo
+        grupo.agregarAlGrupo(new Contacto("IvanUCP@gmail.com"));
+        grupo.agregarAlGrupo(new Contacto("AugustoUCP@gmail.com"));
+        
+        // Obtener los correos de los contactos en el grupo
+        List<String> destinatarios = new ArrayList<>();
+        for (Contacto contacto : grupo.obtenerMiembros()) {
+            destinatarios.add(contacto.getCorreo());
+        }
+        
+        // Llamar al método enviarCorreo usando el grupo de destinatarios
+        enviarCorreo(destinatarios, "", asunto, cuerpo);
+    }
 
     public static void main(String[] args) {
-        GrpsServiceClient cliente = new GrpsServiceClient("192.168.0.165", 50051);
+        GrpsServiceClient cliente = new GrpsServiceClient("Localhost", 50051);//192.168.0.165
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -106,41 +123,45 @@ public class GrpsServiceClient {
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Enviar a un grupo? (s/n): ");
-                    String enviarAGrupo = scanner.nextLine();
+                    System.out.print("Enviar a un grupo predefinido? (s/n): ");
+                    String enviarAGrupoPredefinido = scanner.nextLine();
                     List<String> destinatarios = new ArrayList<>();
                     String grupo = "";
-
-                    if (enviarAGrupo.equalsIgnoreCase("s")) {
-                        System.out.print("Nombre del grupo: ");
-                        grupo = scanner.nextLine();
-                        System.out.print("Ingrese los destinatarios separados por coma: ");
-                        String[] destArray = scanner.nextLine().split(",");
-                        for (String dest : destArray) {
-                            destinatarios.add(dest.trim());
+            
+                    if (enviarAGrupoPredefinido.equalsIgnoreCase("s")) {
+                        // Usar el grupo predefinido de contactos
+                        GruposDeUsuarios grupoPredeterminado = new GruposDeUsuarios();
+                        grupoPredeterminado.agregarAlGrupo(new Contacto("IvanUCP@gmail.com"));
+                        grupoPredeterminado.agregarAlGrupo(new Contacto("AugustoUCP@gmail.com"));
+            
+                        // Obtener los correos de los miembros del grupo
+                        for (Contacto contacto : grupoPredeterminado.obtenerMiembros()) {
+                            destinatarios.add(contacto.getCorreo());
                         }
+                        System.out.println("Enviando correo al grupo predefinido: " + destinatarios);
                     } else {
                         System.out.print("Para: ");
                         String destinatario = scanner.nextLine();
                         destinatarios.add(destinatario);
+                        System.out.println("Enviando correo al destinatario individual: " + destinatarios);
                     }
-
+            
                     System.out.print("Asunto: ");
                     String asunto = scanner.nextLine();
                     System.out.print("Mensaje: ");
                     String cuerpo = scanner.nextLine();
-
+            
                     cliente.enviarCorreo(destinatarios, grupo, asunto, cuerpo);
                     break;
-
+            
                 case 2:
                     cliente.verCorreosRecibidos();
                     break;
-
+            
                 case 3:
                     cliente.verCorreosEnviados();
                     break;
-
+            
                 default:
                     System.out.println("Opción no válida.");
             }

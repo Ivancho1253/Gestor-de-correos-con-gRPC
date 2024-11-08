@@ -89,7 +89,7 @@ public class Cliente3 {
 
     public static void main(String[] args) {
         // Inicializa un cliente para conectarse al servidor gRPC en localhost en el puerto 50051
-        Cliente3 clienteTercero = new Cliente3("192.168.0.165", 50051);
+        Cliente3 clienteTercero = new Cliente3("localhost", 50051);//192.168.0.165
         // Consultar la bandeja de entrada de un destinatario específico
         clienteTercero.consultarBandejaEntrada("IvanUCP@gmail.com");
     }
