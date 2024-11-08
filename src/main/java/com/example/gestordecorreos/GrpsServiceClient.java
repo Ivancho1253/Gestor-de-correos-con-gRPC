@@ -1,12 +1,12 @@
 package com.example.gestordecorreos;
 
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import io.grpc.StatusRuntimeException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
 
 public class GrpsServiceClient {
 
@@ -92,7 +92,7 @@ public class GrpsServiceClient {
     }
 
     public static void main(String[] args) {
-        GrpsServiceClient cliente = new GrpsServiceClient("localhost", 50051);
+        GrpsServiceClient cliente = new GrpsServiceClient("192.168.0.165", 50051);
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
