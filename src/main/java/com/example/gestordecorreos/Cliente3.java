@@ -86,7 +86,7 @@ public class Cliente3 {
 
             System.out.print("¿Quieres marcar este correo como favorito? (si/no): ");
             if (scanner.next().equalsIgnoreCase("si")) {
-                bandeja.agregarAFavoritos(email);
+                bandeja.setFavoritos(email);
             }
         } else if (indiceCorreo != 0) {
             System.out.println("Número de correo no válido.");
@@ -94,7 +94,9 @@ public class Cliente3 {
     }
 
     private void mostrarFavoritos() {
+
         List<Email> favoritos = bandeja.getFavoritos();
+
         if (favoritos.isEmpty()) {
             System.out.println("No tienes correos en favoritos.");
         } else {
@@ -102,6 +104,7 @@ public class Cliente3 {
             for (Email favorito : favoritos) {
                 System.out.println("De: " + favorito.getRemitente());
                 System.out.println("Asunto: " + favorito.getAsunto());
+                System.out.println("Mensaje: " + favorito.getContenido());
                 System.out.println("----------------------------");
             }
         }

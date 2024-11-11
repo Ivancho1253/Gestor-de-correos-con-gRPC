@@ -9,6 +9,7 @@ import java.util.List;
         public String apellido;
         public String correo;
         public Bandeja bandeja;
+
     
         public Contacto(String nombre,String apellido, String correo) {  //Constructor con parametros
             setNombre(nombre);
@@ -16,6 +17,7 @@ import java.util.List;
             setCorreo(correo);
             this.bandeja = new Bandeja();
         }
+        
 
     // Constructor adicional solo con correo
     public Contacto(String correo) {
@@ -94,6 +96,10 @@ import java.util.List;
 
             // Si todos los atributos son iguales, entonces los emails son equivalentes
             return mismoAsunto && mismoCuerpo && mismoRemitente && mismosDestinatarios;
+        }
+        @Override
+        public String toString() {
+            return correo; // o "nombre" si quieres mostrar el nombre en lugar del email
         }
 
 

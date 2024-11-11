@@ -28,6 +28,9 @@ public class Email {
         setDestinatarios(destinatarios);
     }
     public Email(String remitente, String asunto, String contenido) {
+        this.remitente = new Contacto(remitente); // Crear un nuevo contacto a partir del remitente en formato String
+        this.asunto = asunto;
+        this.contenido = contenido;
 
     }
 

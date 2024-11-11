@@ -22,6 +22,7 @@ public class Bandeja {
     }
 
     public ArrayList<Email> getFavoritos() {
+
         return favoritos;
     }
 
@@ -29,16 +30,13 @@ public class Bandeja {
 
         if (!favoritos.contains(emailFavorito)) {
             favoritos.add(emailFavorito);
+            System.out.println("Correo marcado como favorito.");
+
+        }else{
+            System.out.println("Este correo ya está en favoritos.");
+
         }
            
-    }
-    public void agregarAFavoritos(Email emailFavorito) {
-        if (!favoritos.contains(emailFavorito)) {
-            favoritos.add(emailFavorito);
-            System.out.println("Correo marcado como favorito.");
-        } else {
-            System.out.println("Este correo ya está en favoritos.");
-        }
     }
 
     
